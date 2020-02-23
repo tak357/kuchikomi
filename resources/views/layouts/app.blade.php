@@ -25,14 +25,14 @@
                         </form>
 
                     @else
-                    <li>
-                        <form action="{{ route('login') }}" method="POST" class="">
-                            @csrf
-                            <input type="hidden" name="email" value="test@example.jp">
-                            <input type="hidden" name="password" value="password">
-                            <button type="submit" class="">テストログイン</button>
-                        </form>
-                    </li>
+                        <li>
+                            <form action="{{ route('login') }}" method="POST" class="">
+                                @csrf
+                                <input type="hidden" name="email" value="test@example.jp">
+                                <input type="hidden" name="password" value="password">
+                                <button type="submit" class="">テストログイン</button>
+                            </form>
+                        </li>
 
                         <li><a href="{{ route('login') }}">管理者ログイン</a></li>
                         @if (Route::has('register'))
@@ -48,26 +48,7 @@
         <div class="col-9">
 
             <main>
-                <h2 class="head-gray">新着アイテム</h2>
-                <div class="item">
-                    <p>Macbook Pro</p>
-                    <p>参考価格：200,000円</p>
-                    <a href="#">詳細ページ</a>
-                </div>
-
-                <div class="item">
-                    <p>Macbook Pro</p>
-                    <p>参考価格：200,000円</p>
-                    <a href="#">詳細ページ</a>
-                </div>
-
-                <div class="item">
-                    <p>Macbook Pro</p>
-                    <p>参考価格：200,000円</p>
-                    <a href="#">詳細ページ</a>
-                </div>
-                {{--@yield('content')--}}
-                @yield('contents')
+                @yield('content')
             </main>
 
             <footer>
