@@ -9,7 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Auth;
 
-class PostTest extends TestCase
+class ItemTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -86,5 +86,13 @@ class PostTest extends TestCase
     {
         $response = $this->get('/register');
         $response->assertStatus(200);
+    }
+
+    public function testCreate()
+    {
+        $response = $this->get('/items/create')
+            ->assertViewIs('items.create')
+            ->assertSeeText('商品登録')
+            ->assertStatus(200);
     }
 }

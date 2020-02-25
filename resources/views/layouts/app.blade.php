@@ -16,7 +16,7 @@
             <ul>
                 @if (Route::has('login'))
                     @auth
-                        <li><a href="{{ url('/post/register') }}">商品を登録する</a></li>
+                        <li><a href="{{ url('/items/create') }}">商品を登録する</a></li>
                         <li><a href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                         </li>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('layouts.app');
+        return view('/');
     }
 
     /**
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Item;
+
+        $item->fill([
+            'user_id' => Auth::user()->id,
+            'item_name' => $request->itemName,
+            'category_id' => $request->category,
+            'price' => $request->price,
+            'tag' => '',
+            'item_image' => $request->itemImage,
+        ]);
+        $item->save();
+
+        return redirect('items/create')->with('flash_message', '商品を登録しました。');
     }
 
     /**
