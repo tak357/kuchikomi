@@ -2,23 +2,27 @@
 
 @section('content')
 
+    <!-- フラッシュメッセージ -->
+    @if (session('flash_message'))
+        <div class="flash_message">
+            <div class="alert alert-success">
+                {{ session('flash_message') }}
+            </div>
+        </div>
+    @endif
+
     <h2 class="head-gray">新着アイテム</h2>
-    <div class="item">
-        <p>Macbook Pro 16インチ</p>
-        <p>参考価格：250,000円</p>
-        <a href="#">詳細ページ</a>
-    </div>
+    @foreach($items as $item)
+        <div class="item">
+            <p>{{ $item->item_name }}</p>
+            <p>参考価格：{{ $item->price }}円</p>
+            <a href="/items/{{ $item->id }}">詳細ページ</a>
+        </div>
+    @endforeach
 
-    <div class="item">
-        <p>Macbook Pro 13インチ</p>
-        <p>参考価格：200,000円</p>
-        <a href="#">詳細ページ</a>
-    </div>
-
-    <div class="item">
-        <p>Macbook Air</p>
-        <p>参考価格：150,000円</p>
-        <a href="#">詳細ページ</a>
+    <!-- ページネーション -->
+    <div class="paginate">
+        {{ $items->links() }}
     </div>
 
 @endsection

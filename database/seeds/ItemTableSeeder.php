@@ -53,5 +53,7 @@ class ItemTableSeeder extends Seeder
 
         DB::table('items')->insert($param);
 
+        factory(\App\Models\Item::class, 10)->create();
+
     }
 }

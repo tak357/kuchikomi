@@ -63,6 +63,22 @@ nav li {
   margin: 10px 5px;
 }
 
+.paginate ul {
+  justify-content: center;
+}
+
+.item_detail_menu {
+  font-size: 12px;
+  font-weight: normal;
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 aside {
   float: left;
 }

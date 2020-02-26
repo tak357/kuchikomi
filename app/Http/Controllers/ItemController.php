@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -15,7 +16,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('/');
+        // $items = Item::select('items.*')
+        //     ->orderBy('created_at', 'desc')
+        //     ->paginate(10);
+        $items = Item::all()
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('top', ['items' => $items]);
+
     }
 
     /**
@@ -54,45 +63,60 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(item $item)
     {
-        //
+        return view('items.detail', ['item' => $item]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(item $item)
     {
-        //
+        return view('items.edit', ['item' => $item]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, item $item)
     {
-        //
+        $updated_item = $item->fill([
+            'user_id' => Auth::user()->id,
+            'item_name' => $request->item_name,
+            'category_id' => $request->category_id,
+            'price' => $request->price,
+            'tag' => $request->tag,
+            // TODO: 画像アップロード機能の実装
+            // 'item_image' => $request->item_image,
+        ]);
+
+        $updated_item->save();
+
+        return redirect('/')->with('flash_message', '商品情報を更新しました。');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(item $item)
     {
-        //
+        $item->delete();
+
+        return redirect('/')
+            ->with('flash_message', 'アイテムを削除しました。');
     }
 }

@@ -2,8 +2,6 @@
 
 @section('content')
 
-    <h2>商品登録</h2>
-
     <!-- フラッシュメッセージ -->
     @if (session('flash_message'))
         <div class="flash_message">
@@ -13,6 +11,7 @@
         </div>
     @endif
 
+    <h2>商品登録</h2>
     <div class="form-group">
         <div class="item">
             <form action="/items" method="post">

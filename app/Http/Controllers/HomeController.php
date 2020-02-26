@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('top');
+        $items = DB::table('items')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('top', ['items' => $items]);
     }
 }
