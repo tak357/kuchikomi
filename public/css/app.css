@@ -10985,3 +10985,11 @@ footer {
   font-size: 80%;
 }
 
+.alert {
+  position: relative;
+  padding: 1rem 1.25rem 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+

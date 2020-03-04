@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
 use App\Models\Kuchikomi;
 use Illuminate\Http\Request;
 use App\Models\Item;
@@ -44,7 +45,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         $item = new Item;
 
@@ -93,7 +94,7 @@ class ItemController extends Controller
      * @param  item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, item $item)
+    public function update(ItemRequest $request, item $item)
     {
         $updated_item = $item->fill([
             'user_id' => Auth::user()->id,
@@ -101,6 +102,7 @@ class ItemController extends Controller
             'category' => $request->category,
             'price' => $request->price,
             'tag' => $request->tag,
+
             // TODO: 画像アップロード機能の実装
             // 'item_image' => $request->item_image,
         ]);

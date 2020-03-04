@@ -11,6 +11,17 @@
         </div>
     @endif
 
+    <!-- エラーメッセージ -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <h2 class="head-gray">{{ $item->item_name }}の編集ページ</h2>
     <div class="item">
         <div class="form-group">

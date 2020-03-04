@@ -57,7 +57,7 @@
         </div>
 
         <aside class="col-3">
-            <h2 class="head-gray">検索フォーム</h2>
+            <h2 class="head-gray">サイト内検索</h2>
             <div class="form-group">
                 <form action="#">
                     @csrf

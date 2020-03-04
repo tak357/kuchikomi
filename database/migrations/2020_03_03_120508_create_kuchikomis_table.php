@@ -15,12 +15,12 @@ class CreateKuchikomisTable extends Migration
     {
         Schema::create('kuchikomis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->nullable();
             $table->bigInteger('item_id')->unsigned();
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->text('body');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('items');

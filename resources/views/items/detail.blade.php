@@ -11,9 +11,22 @@
         </div>
     @endif
 
-    <!--ログイン中のみ記事編集・記事削除メニューを表示する-->
+    <!-- クチコミフォームのエラーメッセージ -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する-->
     @auth
         @if (Auth::user()->id === $item->user_id)
+            <!--TODO:-誰が投稿したかを表示する-->
+            {{--<p class="text-right">商品登録者：{{ $item->user_id }}</p>--}}
             <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
             <form method="post" action="/items/{{ $item->id }}/" id="form_{{$item->id}}">
                 @csrf
@@ -31,8 +44,20 @@
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
     @forelse ($kuchikomis as $kuchikomi)
         <div class="kuchikomi">
-            <li>投稿者名：{{ $kuchikomi->name }}</li>
-            <li>本文：{{ $kuchikomi->body }}</li>
+            <table>
+                <tr>
+                    <th>投稿日：</th>
+                    <td>{{ $kuchikomi->created_at->format('Y年m月d日 H時i分') }}</td>
+                </tr>
+                <tr>
+                    <th>投稿者名：</th>
+                    <td>{{ $kuchikomi->name }}</td>
+                </tr>
+                <tr>
+                    <th>本文：</th>
+                    <td>{{ $kuchikomi->body }}</td>
+                </tr>
+            </table>
         </div>
     @empty
         <div class="kuchikomi">
