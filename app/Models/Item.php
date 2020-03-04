@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $guarded = ['id'];
+
+    public function kuchikomi()
+    {
+        return $this->hasMany('App\Kuchikomi');
+    }
 }

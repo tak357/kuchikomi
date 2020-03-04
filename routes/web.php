@@ -18,4 +18,5 @@ Auth::routes();
 // });
 
 Route::get('/', 'HomeController@index');
-Route::resource('items', 'PostController');
+Route::resource('items', 'ItemController');
+Route::resource('kuchikomis', 'KuchikomiController');

@@ -23,15 +23,34 @@
         @endif
     @endauth
     <div class="clearfix"></div>
-    <h2 class="head-gray">{{ $item->item_name }}の詳細</h2>
+    <h2 class="head-gray">{{ $item->item_name }}</h2>
     <div class="item">
-        <p>{{ $item->item_name }}</p>
-        <p>参考価格：{{ $item->price }}</p>
+        <p>参考価格：<span class="text-danger font-weight-bold"> {{ $item->price }} </span>円</p>
     </div>
 
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
+    @forelse ($kuchikomis as $kuchikomi)
+        <div class="kuchikomi">
+            <li>投稿者名：{{ $kuchikomi->name }}</li>
+            <li>本文：{{ $kuchikomi->body }}</li>
+        </div>
+    @empty
+        <div class="kuchikomi">
+            <p>クチコミはありません</p>
+        </div>
+    @endforelse
+
+    <h2 class="head-gray">クチコミを書く</h2>
     <div class="item">
-        <p>準備中</p>
+        <form method="post" action=" {{ action('KuchikomiController@store', 'aaa') }} ">
+            @csrf
+            <input type="hidden" name="post_id" value="{{ $item->id }}">
+            <label for="comment_user_name">名前</label><span class="text-danger ml-2">必須</span>
+            <input type="text" name="comment_user_name" id="comment_user_name" class="form-control">
+            <label for="comment_body">本文</label><span class="text-danger ml-2">必須</span>
+            <textarea name="comment_body" id="comment_body" cols="30" rows="10" class="form-control"></textarea>
+            <button type="submit" class="btn btn-primary">コメントする</button>
+        </form>
     </div>
 
     <script src="/js/delete.js"></script>

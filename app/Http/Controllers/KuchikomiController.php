@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\comment;
+use App\Models\Item;
+use App\Models\Kuchikomi;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class KuchikomiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return ('index');
     }
 
     /**
@@ -24,7 +25,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return ('create');
+        // return view('kuchikomis.create');
     }
 
     /**
@@ -35,16 +37,29 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $kuchikomi = new Kuchikomi;
+
+        $kuchikomi->fill([
+            'user_id' => '1',           // dummy
+            'name' => $request->comment_user_name,
+            'item_id' => $request->post_id,
+            'email' => 'aaa@test.jp',   // dummy
+            'img' => 'test',            // dummy
+            'body' => $request->comment_body,
+        ]);
+        $kuchikomi->save();
+
+        return redirect()->back()->with('flash_message', 'クチコミを登録しました。');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(comment $comment)
+    public function show($id)
     {
         //
     }
@@ -52,10 +67,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(comment $comment)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +79,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comment $comment)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +90,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comment $comment)
+    public function destroy($id)
     {
         //
     }

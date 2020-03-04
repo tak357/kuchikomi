@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kuchikomi;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class PostController extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,9 +51,9 @@ class PostController extends Controller
         $item->fill([
             'user_id' => Auth::user()->id,
             'item_name' => $request->itemName,
-            'category_id' => $request->category,
+            'category' => $request->category,
             'price' => $request->price,
-            'tag' => '',
+            'tag' => $request->tag,
             'item_image' => $request->itemImage,
         ]);
         $item->save();
@@ -68,7 +69,10 @@ class PostController extends Controller
      */
     public function show(item $item)
     {
-        return view('items.detail', ['item' => $item]);
+        // クチコミ情報の取得
+        $kuchikomis = Kuchikomi::where('item_id', $item->id)->get();
+
+        return view('items.detail', ['item' => $item, 'kuchikomis' => $kuchikomis]);
     }
 
     /**
@@ -94,7 +98,7 @@ class PostController extends Controller
         $updated_item = $item->fill([
             'user_id' => Auth::user()->id,
             'item_name' => $request->item_name,
-            'category_id' => $request->category_id,
+            'category' => $request->category,
             'price' => $request->price,
             'tag' => $request->tag,
             // TODO: 画像アップロード機能の実装

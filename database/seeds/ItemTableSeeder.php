@@ -13,12 +13,12 @@ class ItemTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'user_id' => '1',
+            'user_id' => 1,
             'item_name' => 'MacBook Pro 16インチ',
-            'category_id' => '1',
+            'category' => 1,
             'price' => 250000,
             'tag' => 'ノートパソコン',
-            'item_image' => '',
+            'item_image' => 'dummy',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
@@ -27,12 +27,12 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert($param);
 
         $param = [
-            'user_id' => '2',
+            'user_id' => 2,
             'item_name' => 'MacBook Pro 13インチ',
-            'category_id' => '1',
+            'category' => 1,
             'price' => 200000,
             'tag' => 'ノートパソコン',
-            'item_image' => '',
+            'item_image' => 'dummy',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
@@ -41,12 +41,12 @@ class ItemTableSeeder extends Seeder
 
 
         $param = [
-            'user_id' => '1',
+            'user_id' => 1,
             'item_name' => 'MacBook Air',
-            'category_id' => '1',
+            'category' => 1,
             'price' => 150000,
             'tag' => 'ノートパソコン',
-            'item_image' => '',
+            'item_image' => 'dummy',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
