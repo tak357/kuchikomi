@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // varchar型の文字数を191に制限
+        Schema::defaultStringLength(191);
     }
 }

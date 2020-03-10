@@ -13,10 +13,9 @@
 
 Auth::routes();
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'HomeController@index');
+
+Route::get('items/search', 'ItemController@search');
 Route::resource('items', 'ItemController');
+
 Route::resource('kuchikomis', 'KuchikomiController');

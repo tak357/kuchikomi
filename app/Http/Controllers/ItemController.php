@@ -125,4 +125,27 @@ class ItemController extends Controller
         return redirect('/')
             ->with('flash_message', 'アイテムを削除しました。');
     }
+
+    /**
+     * サイト内検索機能（検索対象：商品名(item_name））
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search(Request $request)
+    {
+        $search_keyword = $request->input('search_keyword');
+
+        // クエリ生成
+        $query = Item::query();
+
+        // 検索キーワードとマッチング
+        if (!empty($search_keyword)) {
+            $query->where('item_name', 'like', '%' . $search_keyword . '%');
+        }
+
+        // ページネーション
+        $items = $query->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('search_result', ['items' => $items, 'search_keyword' => $search_keyword]);
+    }
 }

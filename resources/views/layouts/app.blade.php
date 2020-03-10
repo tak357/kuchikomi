@@ -45,7 +45,7 @@
     </header>
 
     <div class="row">
-        <div class="col-9">
+        <div class="col-sm-9">
 
             <main>
                 @yield('content')
@@ -56,17 +56,18 @@
             </footer>
         </div>
 
-        <aside class="col-3">
+        <aside class="col-sm-3">
             <h2 class="head-gray">サイト内検索</h2>
             <div class="form-group">
-                <form action="#">
+                <form action="{{ action('ItemController@search') }}" method="get">
                     @csrf
-                    <input class="form-control" type="text" name="search" id="search">
+                    <input class="form-control" type="search" name="search_keyword" id="search_keyword"
+                           placeholder="キーワードを入力">
                     <button class="btn btn-primary">検索する</button>
                 </form>
             </div>
             <h2 class="head-gray">広告</h2>
-            <div class="ad"><img src="storage/ad_sample.png" width="100%" alt=""></div>
+            <div class="ad"><img src="{{ asset('storage/ad_sample.png') }}" width="100%" alt=""></div>
         </aside>
 
     </div>

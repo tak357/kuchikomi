@@ -38,7 +38,7 @@
     <div class="clearfix"></div>
     <h2 class="head-gray">{{ $item->item_name }}</h2>
     <div class="item">
-        <p>参考価格：<span class="text-danger font-weight-bold"> {{ $item->price }} </span>円</p>
+        <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
     </div>
 
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
