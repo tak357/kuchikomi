@@ -38,6 +38,7 @@
     <div class="clearfix"></div>
     <h2 class="head-gray">{{ $item->item_name }}</h2>
     <div class="item">
+        <img src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
         <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
     </div>
 
@@ -50,11 +51,11 @@
                     <td>{{ $kuchikomi->created_at->format('Y年m月d日 H時i分') }}</td>
                 </tr>
                 <tr>
-                    <th>投稿者名：</th>
+                    <th>投稿者：</th>
                     <td>{{ $kuchikomi->name }}</td>
                 </tr>
                 <tr>
-                    <th>本文：</th>
+                    <th>本文　：</th>
                     <td>{{ $kuchikomi->body }}</td>
                 </tr>
             </table>

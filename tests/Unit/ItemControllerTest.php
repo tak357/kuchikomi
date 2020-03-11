@@ -22,8 +22,8 @@ class PostControllerTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_post_controller()
-    {
+    // public function test_post_controller()
+    // {
         // 商品登録できたか画面で確認
 
         // 商品登録できたかデータベースで確認
@@ -35,5 +35,5 @@ class PostControllerTest extends TestCase
         //     'price' => 200000,
         // ]);
 
-    }
+    // }
 }

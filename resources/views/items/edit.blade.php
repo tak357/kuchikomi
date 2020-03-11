@@ -25,7 +25,7 @@
     <h2 class="head-gray">{{ $item->item_name }}の編集ページ</h2>
     <div class="item">
         <div class="form-group">
-            <form action="/items/{{ $item->id }}" method="post">
+            <form action="/items/{{ $item->id }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{ method_field(('patch')) }}
                 <input type="hidden" name="user_id" id="user_id" value="$item->user_id">
@@ -43,10 +43,17 @@
                 <input type="text" name="price" id="price" class="form-control" value="{{ $item->price }}">
                 <label for="tag">タグ</label>
                 <input type="text" name="tag" id="tag" class="form-control" value="{{ $item->tag }}">
-                {{-- TODO: 画像登録機能の追加--}}
-                {{--<label for="item_image">商品イメージ画像</label>--}}
-                <button type="submit" class="btn btn-primary">更新する</button>
+                <label for="item_image">商品画像</label><br>
+                {{-- TODO: デフォルト画像URLの修正--}}
+                <img src="{{ asset('storage/' . $item->item_image) }}"
+                     width="200" alt="Image preview..."> <br><br>
+                <br>
+                <input type="file" onchange="previewFile()" name="item_image" id="item_image">
+                <br>
+                <button type="submit" class="btn btn-primary mt-3">更新する</button>
             </form>
         </div>
     </div>
+    <script src="/js/image_preview.js"></script>
+
 @endsection

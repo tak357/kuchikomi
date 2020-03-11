@@ -10,6 +10,11 @@ class Item extends Model
 
     public function kuchikomi()
     {
-        return $this->hasMany('App\Kuchikomi');
+        return $this->hasMany('App\Models\Kuchikomi');
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category');
     }
 }

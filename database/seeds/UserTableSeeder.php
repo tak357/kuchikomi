@@ -19,19 +19,19 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => '佐々木小次郎',
+            'name' => '管理人１',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
         ]);
 
         DB::table('users')->insert([
-            'name' => '宮本武蔵',
+            'name' => '管理人２',
             'email' => 'test@example.net',
             'password' => bcrypt('password'),
         ]);
 
         DB::table('users')->insert([
-            'name' => '徳永家康',
+            'name' => '管理人３',
             'email' => 'test@example.org',
             'password' => bcrypt('password'),
         ]);

@@ -51,24 +51,38 @@
                 @yield('content')
             </main>
 
-            <footer>
-                <p>copyright <a href="/">クチラン</a> 2020</p>
-            </footer>
         </div>
 
         <aside class="col-sm-3">
             <h2 class="head-gray">サイト内検索</h2>
             <div class="form-group">
                 <form action="{{ action('ItemController@search') }}" method="get">
-                    @csrf
-                    <input class="form-control" type="search" name="search_keyword" id="search_keyword"
-                           placeholder="キーワードを入力">
+                    @csrf<input class="form-control" type="search" name="search_keyword" id="search_keyword"
+                                placeholder="キーワードを入力">
                     <button class="btn btn-primary">検索する</button>
                 </form>
             </div>
+            {{--TODO:カテゴリーテーブルから出力して内部リンク--}}
+            <h2 class="head-gray">カテゴリー</h2>
+            @foreach(\App\Models\Category::all() as $category)
+                <div class="category">
+                    <a href="#">
+                        - {{ $category->title }}
+                    </a>
+                </div>
+            @endforeach
+
             <h2 class="head-gray">広告</h2>
-            <div class="ad"><img src="{{ asset('storage/ad_sample.png') }}" width="100%" alt=""></div>
+            <div class="ad">
+                <a href="https://mobile.rakuten.co.jp/" target="_blank">
+                    <img src="{{ asset('storage/ad_sample.png') }}" width="100%" alt="広告">
+                </a>
+            </div>
         </aside>
+
+        <footer>
+            <p>copyright <a href="/">クチラン</a> 2020</p>
+        </footer>
 
     </div>
 </div>

@@ -23,13 +23,13 @@
     @endif
 
 
-    <h2>商品登録</h2>
+    <h2 class="head-gray">商品登録</h2>
     <div class="form-group">
         <div class="item">
-            <form action="/items" method="post">
+            <form action="/items" method="post" enctype="multipart/form-data">
                 @csrf
-                <label for="itemName">商品名</label><span class="text-danger ml-2">必須</span>
-                <input type="text" name="itemName" id="itemName" class="form-control">
+                <label for="item_name">商品名</label><span class="text-danger ml-2">必須</span>
+                <input type="text" name="item_name" id="itemName" class="form-control">
                 <label for="category">カテゴリー</label><span class="text-danger ml-2">必須</span>
                 <select name="category" id="category" class="form-control">
                     <option value="0">※選択してください</option>
@@ -45,9 +45,16 @@
                 {{--TODO: 画像アップロード機能の追加--}}
                 {{--<label for="itemImage">商品画像</label><span class="ml-2">任意</span>--}}
                 {{--<input type="text" name="itemImage" id="itemImage" class="form-control">--}}
-                <input type="hidden" name="itemImage" value="1234">
-                <button type="submit" class="btn btn-primary"">登録する</button>
+                {{-- TODO: デフォルト画像URLの修正--}}
+                <label for="item_image">商品画像　任意</label><br>
+                <input type="file" onchange="previewFile()" name="item_image" id="item_image">
+                <br><br>
+                <img src="{{ asset('storage/item_images/no_image.png') }}" width="200" alt="Image preview..."> <br><br>
+
+{{--                <input type="hidden" name="itemImage" value="1234">--}}
+                <button type="submit" class="btn btn-primary">登録する</button>
             </form>
         </div>
     </div>
+    <script src="/js/image_preview.js"></script>
 @endsection

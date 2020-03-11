@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,6 +29,8 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('top', ['items' => $items]);
+        return view('top', [
+            'items' => $items,
+        ]);
     }
 }

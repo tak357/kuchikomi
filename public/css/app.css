@@ -10941,7 +10941,7 @@ nav li {
 }
 
 .item img {
-  max-width: 125px;
+  max-width: 115px;
 }
 
 .item_img {
@@ -10984,8 +10984,13 @@ aside {
   margin-bottom: 10px;
 }
 
+aside .category {
+  font-size: 0.8rem;
+  margin: 5px 0;
+}
+
 .ad {
-  height: 200px;
+  max-height: 300px;
 }
 
 footer {
@@ -11016,6 +11021,10 @@ footer {
 
   .item {
     font-size: 0.8rem;
+  }
+
+  .item img {
+    max-width: 100px;
   }
 }
 

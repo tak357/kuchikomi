@@ -13,7 +13,7 @@ $factory->define(Item::class, function (Faker $faker) {
         'category' => $faker->numberBetween(1,3),
         'price' => $faker->numberBetween(1000,300000),
         'tag' => $faker->sentence(2),
-        'item_image' => $faker->sentence(2),
+        'item_image' => 'item_images/no_image.png',
         'created_at' => $faker->dateTime(),
         'updated_at' => $faker->dateTime(),
     ];
