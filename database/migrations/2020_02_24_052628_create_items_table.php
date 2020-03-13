@@ -19,6 +19,10 @@ class CreateItemsTable extends Migration
             $table->string('item_name');
             $table->integer('category');
             $table->integer('price');
+            $table->integer('kuchikomi_count')->default(0);
+            $table->integer('kuchikomi_sum_score')->default(0);
+            // $table->integer('kuchikomi_avg_score')->default(0);
+            $table->float('kuchikomi_avg_score')->default(0);
             $table->string('tag');
             $table->string('item_image');
             $table->timestamps();

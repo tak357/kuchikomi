@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\KuchikomiRequest;
+use App\Models\Category;
 use App\Models\Item;
-use App\Models\Kuchikomi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class KuchikomiController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class KuchikomiController extends Controller
      */
     public function index()
     {
-        return ('index');
+
     }
 
     /**
@@ -27,7 +25,7 @@ class KuchikomiController extends Controller
      */
     public function create()
     {
-        return ('create');
+        //
     }
 
     /**
@@ -36,33 +34,9 @@ class KuchikomiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KuchikomiRequest $request)
+    public function store(Request $request)
     {
-        // dd($request);
-        $kuchikomi = new Kuchikomi;
-
-        $kuchikomi->fill([
-            'user_id' => 1, // dummy
-            'name' => $request->comment_user_name,
-            'item_id' => $request->item_id,
-            'email' => 'aaa@test.jp',   // dummy
-            'score' => $request->score,
-            'img' => 'testimg', // dummy
-            'body' => $request->comment_body,
-        ]);
-
-        $items = Item::find($request->item_id);
-
-        // クチコミのスコアを計算
-        $items->kuchikomi_count += 1;
-        $items->kuchikomi_sum_score += $request->score;
-        $items->kuchikomi_avg_score = $items->kuchikomi_sum_score / $items->kuchikomi_count;
-
-        // 保存
-        $kuchikomi->save();
-        $items->save();
-
-        return redirect()->back()->with('flash_message', 'クチコミを投稿しました。');
+        //
     }
 
     /**
@@ -71,9 +45,15 @@ class KuchikomiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    // public function show($id)
+    public function show(Category $category)
     {
-        //
+        $items = Item::where('category', $category->id)->paginate(10);;
+
+        return view('categories.index', [
+            'categories' => $category,
+            'items' => $items,
+        ]);
     }
 
     /**

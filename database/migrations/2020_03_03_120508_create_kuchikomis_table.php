@@ -19,6 +19,7 @@ class CreateKuchikomisTable extends Migration
             $table->bigInteger('item_id')->unsigned();
             $table->string('name');
             $table->string('email')->nullable();
+            $table->integer('score');
             $table->text('body');
             $table->string('img')->nullable();
             $table->timestamps();

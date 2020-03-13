@@ -38,8 +38,13 @@
     <div class="clearfix"></div>
     <h2 class="head-gray">{{ $item->item_name }}</h2>
     <div class="item">
-        <img src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
+        <img class="mb-2" src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
         <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
+        @if ($item->kuchikomi_avg_score != 0)
+            <p>クチコミ平均点：<span class="text-danger"> {{ $item->kuchikomi_avg_score }} </span></p>
+        @else
+            <p>クチコミ平均点：なし</p>
+        @endif
     </div>
 
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
@@ -49,6 +54,10 @@
                 <tr>
                     <th>投稿日：</th>
                     <td>{{ $kuchikomi->created_at->format('Y年m月d日 H時i分') }}</td>
+                </tr>
+                <tr>
+                    <th>スコア：</th>
+                    <td>{{ $kuchikomi->score }}</td>
                 </tr>
                 <tr>
                     <th>投稿者：</th>
@@ -66,13 +75,25 @@
         </div>
     @endforelse
 
-    <h2 class="head-gray">クチコミを書く</h2>
+    <h2 class="head-gray">{{ $item->item_name }}のクチコミを書く</h2>
     <div class="item">
         <form method="post" action=" {{ action('KuchikomiController@store', 'aaa') }} ">
             @csrf
-            <input type="hidden" name="post_id" value="{{ $item->id }}">
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
             <label for="comment_user_name">名前</label><span class="text-danger ml-2">必須</span>
             <input type="text" name="comment_user_name" id="comment_user_name" class="form-control">
+            {{--TODO:メールアドレス入力欄--}}
+            {{--<label for="comment_user_email">Eメールアドレス</label><span class="ml-2">任意</span>--}}
+            {{--<input type="text" name="comment_user_email" id="comment_user_email" class="form-control">--}}
+            <label for="score">点数（５段階）</label><span class="text-danger ml-2">必須</span>
+            <select name="score" id="score" class="form-control">
+                <option value="0">※選択してください</option>
+                <option value="5">5(とても良い)</option>
+                <option value="4">4(良い)</option>
+                <option value="3">3(普通)</option>
+                <option value="2">2(悪い)</option>
+                <option value="1">1(とても悪い)</option>
+            </select>
             <label for="comment_body">本文</label><span class="text-danger ml-2">必須</span>
             <textarea name="comment_body" id="comment_body" cols="30" rows="10" class="form-control"></textarea>
             <button type="submit" class="btn btn-primary">コメントする</button>

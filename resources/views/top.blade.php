@@ -21,7 +21,13 @@
             </div>
             <p>{{ $item->item_name }}</p>
             <p>参考価格：<span class="text-danger">{{ number_format($item->price) }}</span>円</p>
+            @if ($item->kuchikomi_avg_score != 0)
+                <p>クチコミ平均点：<span class="text-danger"> {{ $item->kuchikomi_avg_score }} </span></p>
+            @else
+                <p>クチコミ平均点：なし</p>
+            @endif
             <a href="/items/{{ $item->id }}">詳細ページ</a>
+
         </div>
     @endforeach
 

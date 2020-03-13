@@ -19,3 +19,5 @@ Route::get('items/search', 'ItemController@search');
 Route::resource('items', 'ItemController');
 
 Route::resource('kuchikomis', 'KuchikomiController');
+
+Route::resource('categories', 'CategoryController')->only('show');

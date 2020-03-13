@@ -66,7 +66,7 @@
             <h2 class="head-gray">カテゴリー</h2>
             @foreach(\App\Models\Category::all() as $category)
                 <div class="category">
-                    <a href="#">
+                    <a href="/categories/ {{ $category->id }}">
                         - {{ $category->title }}
                     </a>
                 </div>
