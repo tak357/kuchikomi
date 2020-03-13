@@ -62,13 +62,24 @@
                     <button class="btn btn-primary">検索する</button>
                 </form>
             </div>
-            {{--TODO:カテゴリーテーブルから出力して内部リンク--}}
             <h2 class="head-gray">カテゴリー</h2>
             @foreach(\App\Models\Category::all() as $category)
                 <div class="category">
                     <a href="/categories/ {{ $category->id }}">
                         - {{ $category->title }}
                     </a>
+                </div>
+            @endforeach
+
+            <h2 class="head-gray">クチコミ人気ランキング</h2>
+            @foreach(\App\Models\Item::KuchkomiRankingOutput() as $ranking_item)
+                <p>第{{ $loop->iteration }}位：{{ number_format($ranking_item->kuchikomi_avg_score,2) }}点({{ $ranking_item->kuchikomi_count }})</p>
+                <div class="ranking">
+                    <a href="{{ $ranking_item->id }}">
+                        <img src="{{ asset('storage/' . $ranking_item->item_image) }}"
+                             alt="{{ $ranking_item->item_name }}の画像">
+                    </a>
+                    <p><a href="{{ $ranking_item->id }}">{{ $ranking_item->item_name }}</a></p>
                 </div>
             @endforeach
 

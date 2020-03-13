@@ -10989,6 +10989,16 @@ aside .category {
   margin: 5px 0;
 }
 
+aside .ranking {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+aside .ranking img {
+  max-width: 100%;
+}
+
 .ad {
   max-height: 300px;
 }

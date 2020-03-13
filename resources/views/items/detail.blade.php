@@ -41,7 +41,7 @@
         <img class="mb-2" src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
         <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
         @if ($item->kuchikomi_avg_score != 0)
-            <p>クチコミ平均点：<span class="text-danger"> {{ $item->kuchikomi_avg_score }} </span></p>
+            <p>クチコミ平均点：<span class="text-danger"> {{ number_format($item->kuchikomi_avg_score,2) }} </span>点</p>
         @else
             <p>クチコミ平均点：なし</p>
         @endif
@@ -56,12 +56,30 @@
                     <td>{{ $kuchikomi->created_at->format('Y年m月d日 H時i分') }}</td>
                 </tr>
                 <tr>
-                    <th>スコア：</th>
-                    <td>{{ $kuchikomi->score }}</td>
-                </tr>
-                <tr>
                     <th>投稿者：</th>
                     <td>{{ $kuchikomi->name }}</td>
+                </tr>
+                <tr>
+                    <th>スコア：</th>
+                    <td>
+                        @switch($kuchikomi->score)
+                            @case(1)
+                            <span class="text-primary">★☆☆☆☆</span>（{{ $kuchikomi->score }}点）
+                            @break
+                            @case(2)
+                            <span class="text-primary">★★☆☆☆</span>（{{ $kuchikomi->score }}点）
+                            @break
+                            @case(3)
+                            <span class="text-primary">★★★☆☆</span>（{{ $kuchikomi->score }}点）
+                            @break
+                            @case(4)
+                            <span class="text-primary">★★★★☆</span>（{{ $kuchikomi->score }}点）
+                            @break
+                            @case(5)
+                            <span class="text-primary">★★★★★</span>（{{ $kuchikomi->score }}点）
+                            @break
+                        @endswitch
+                    </td>
                 </tr>
                 <tr>
                     <th>本文　：</th>

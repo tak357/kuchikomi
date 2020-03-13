@@ -60,5 +60,29 @@ class KuchikomiTableSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);
+
+        DB::table('kuchikomis')->insert([
+            'user_id' => 1,
+            'item_id' => 2,
+            'name' => 'クチコミ職人',
+            'email' => '',
+            'score' => 5,
+            'body' => '最高です！',
+            'img' => 'test',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
+
+        DB::table('kuchikomis')->insert([
+            'user_id' => 1,
+            'item_id' => 3,
+            'name' => 'クチコミ職人',
+            'email' => '',
+            'score' => 3,
+            'body' => '悪くない',
+            'img' => 'test',
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now(),
+        ]);
     }
 }

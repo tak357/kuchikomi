@@ -25,6 +25,7 @@ class KuchikomiRequest extends FormRequest
     {
         return [
             'comment_user_name' => 'required',
+            'score' => 'required|between:1,5',
             'comment_body' => 'required',
         ];
     }
