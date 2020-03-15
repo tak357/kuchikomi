@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- フラッシュメッセージ -->
+    {{--フラッシュメッセージ--}}
     @if (session('flash_message'))
         <div class="flash_message">
             <div class="alert alert-success">
@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <!-- エラーメッセージ -->
+    {{--エラーメッセージ--}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -44,7 +44,6 @@
                 <label for="tag">タグ</label>
                 <input type="text" name="tag" id="tag" class="form-control" value="{{ $item->tag }}">
                 <label for="item_image">商品画像</label><br>
-                {{-- TODO: デフォルト画像URLの修正--}}
                 <img src="{{ asset('storage/' . $item->item_image) }}"
                      width="200" alt="Image preview..."> <br><br>
                 <br>

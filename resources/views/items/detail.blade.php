@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- フラッシュメッセージ -->
+    {{--フラッシュメッセージ--}}
     @if (session('flash_message'))
         <div class="flash_message">
             <div class="alert alert-success">
@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <!-- クチコミフォームのエラーメッセージ -->
+    {{--クチコミフォームのエラーメッセージ--}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -22,11 +22,9 @@
         </div>
     @endif
 
-    <!--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する-->
+    {{--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する--}}
     @auth
         @if (Auth::user()->id === $item->user_id)
-            <!--TODO:-誰が投稿したかを表示する-->
-            {{--<p class="text-right">商品登録者：{{ $item->user_id }}</p>--}}
             <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
             <form method="post" action="/items/{{ $item->id }}/" id="form_{{$item->id}}">
                 @csrf
@@ -34,6 +32,8 @@
             </form>
             <a class="item_detail_menu" href="/items/{{ $item->id }}/edit">[記事編集]</a>
         @endif
+        {{--投稿者を表示する--}}
+        <p class="item_detail_menu">商品登録者：{{ $item_creator->name }}（ID:{{ $item->user_id }}）</p>
     @endauth
     <div class="clearfix"></div>
     <h2 class="head-gray">{{ $item->item_name }}</h2>
@@ -99,21 +99,22 @@
             @csrf
             <input type="hidden" name="item_id" value="{{ $item->id }}">
             <label for="comment_user_name">名前</label><span class="text-danger ml-2">必須</span>
-            <input type="text" name="comment_user_name" id="comment_user_name" class="form-control">
-            {{--TODO:メールアドレス入力欄--}}
-            {{--<label for="comment_user_email">Eメールアドレス</label><span class="ml-2">任意</span>--}}
-            {{--<input type="text" name="comment_user_email" id="comment_user_email" class="form-control">--}}
+            <input type="text" name="comment_user_name" id="comment_user_name" class="form-control"
+                   value="{{ old('comment_user_name') }}">
+            <label for="comment_user_email">Eメールアドレス</label><span class="ml-2">任意</span>
+            <input type="text" name="comment_user_email" id="comment_user_email" class="form-control">
             <label for="score">点数（５段階）</label><span class="text-danger ml-2">必須</span>
             <select name="score" id="score" class="form-control">
-                <option value="0">※選択してください</option>
-                <option value="5">5(とても良い)</option>
-                <option value="4">4(良い)</option>
-                <option value="3">3(普通)</option>
-                <option value="2">2(悪い)</option>
-                <option value="1">1(とても悪い)</option>
+                <option value="0" selected @if(old('score')=='0') selected @endif>※選択してください</option>
+                <option value="5" @if(old('score')=='5') selected @endif>5(とても良い)</option>
+                <option value="4" @if(old('score')=='4') selected @endif>4(良い)</option>
+                <option value="3" @if(old('score')=='3') selected @endif>3(普通)</option>
+                <option value="2" @if(old('score')=='2') selected @endif>2(悪い)</option>
+                <option value="1" @if(old('score')=='1') selected @endif>1(とても悪い)</option>
             </select>
             <label for="comment_body">本文</label><span class="text-danger ml-2">必須</span>
-            <textarea name="comment_body" id="comment_body" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="comment_body" id="comment_body" cols="30" rows="10"
+                      class="form-control">{{ old('comment_body') }}</textarea>
             <button type="submit" class="btn btn-primary">コメントする</button>
         </form>
     </div>

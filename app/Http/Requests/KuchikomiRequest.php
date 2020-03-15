@@ -25,7 +25,8 @@ class KuchikomiRequest extends FormRequest
     {
         return [
             'comment_user_name' => 'required',
-            'score' => 'required|between:1,5',
+            'comment_user_email' => 'nullable|email',
+            'score' => 'numeric|between:1,5',
             'comment_body' => 'required',
         ];
     }
@@ -34,6 +35,8 @@ class KuchikomiRequest extends FormRequest
     {
         return [
             'comment_user_name.required' => '名前は必ず入力してください',
+            'comment_user_email.email' => '正しいEメールアドレスを入力してください',
+            'score.between' => '点数を選択してください',
             'comment_body.required' => '本文は必ず入力してください',
         ];
     }

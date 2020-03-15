@@ -10995,6 +10995,12 @@ aside .ranking {
   padding: 10px;
 }
 
+.ranking-header {
+  background: #ffffe0;
+  border-radius: 5px;
+  padding: 5px 5px 5px 10px;
+}
+
 aside .ranking img {
   max-width: 100%;
 }

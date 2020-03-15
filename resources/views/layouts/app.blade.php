@@ -65,7 +65,7 @@
             <h2 class="head-gray">カテゴリー</h2>
             @foreach(\App\Models\Category::all() as $category)
                 <div class="category">
-                    <a href="/categories/ {{ $category->id }}">
+                    <a href="/categories/{{ $category->id }}">
                         - {{ $category->title }}
                     </a>
                 </div>
@@ -73,7 +73,7 @@
 
             <h2 class="head-gray">クチコミ人気ランキング</h2>
             @foreach(\App\Models\Item::KuchkomiRankingOutput() as $ranking_item)
-                <p>第{{ $loop->iteration }}位：{{ number_format($ranking_item->kuchikomi_avg_score,2) }}点({{ $ranking_item->kuchikomi_count }})</p>
+                <p class="ranking-header">第{{ $loop->iteration }}位：{{ number_format($ranking_item->kuchikomi_avg_score,2) }}点({{ $ranking_item->kuchikomi_count }})</p>
                 <div class="ranking">
                     <a href="{{ $ranking_item->id }}">
                         <img src="{{ asset('storage/' . $ranking_item->item_image) }}"

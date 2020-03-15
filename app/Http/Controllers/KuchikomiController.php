@@ -17,7 +17,7 @@ class KuchikomiController extends Controller
      */
     public function index()
     {
-        return ('index');
+
     }
 
     /**
@@ -25,28 +25,28 @@ class KuchikomiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return ('create');
-    }
+    // public function create()
+    // {
+    //
+    // }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(KuchikomiRequest $request)
     {
-        // dd($request);
         $kuchikomi = new Kuchikomi;
 
         $kuchikomi->fill([
             'user_id' => 1, // dummy
             'name' => $request->comment_user_name,
             'item_id' => $request->item_id,
-            'email' => 'aaa@test.jp',   // dummy
+            'email' => $request->comment_user_email,
             'score' => $request->score,
+            // TODO:画像投稿機能をつける
             'img' => 'testimg', // dummy
             'body' => $request->comment_body,
         ]);
