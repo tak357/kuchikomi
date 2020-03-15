@@ -42,7 +42,7 @@ class ItemTest extends TestCase
         factory(Item::class)->create([
             'user_id' => 1,
             'item_name' => 'MacBook Air',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 148800,
             'tag' => 'ノートパソコン',
             'item_image' => 'item_images/no_image.png',
@@ -137,7 +137,7 @@ class ItemTest extends TestCase
         // $this->actingAs($this->user)->post('/items', [
         //     'user_id' => $this->user->id,
         //     'item_name' => 'New Macbook Air',
-        //     'category' => 2,
+        //     'category_id' => 2,
         //     'price' => 123456789,
         //     'tag' => 'New Edition',
         //     'item_image' => 'item_images/mba2018.jpeg',
@@ -146,7 +146,7 @@ class ItemTest extends TestCase
         // 編集したデータの確認
         // $this->assertDatabaseHas('items', [
         //     'item_name' => 'New Macbook Air',
-        //     'category' => 2,
+        //     'category_id' => 2,
         //     'price' => 123456789,
         //     'tag' => 'New Edition',
         //     'item_image' => 'item_images/mba2018.jpeg',
@@ -163,7 +163,7 @@ class ItemTest extends TestCase
         factory(Item::class)->create([
             'user_id' => $this->user->id,
             'item_name' => 'MacBook Pro 16インチ',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 248800,
             'kuchikomi_count' => 4,
             'kuchikomi_sum_score' => 13,
@@ -178,7 +178,7 @@ class ItemTest extends TestCase
         $this->assertDatabaseHas('items', [
             'user_id' => $this->user->id,
             'item_name' => 'MacBook Pro 16インチ',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 248800,
             'kuchikomi_count' => 4,
             'kuchikomi_sum_score' => 13,
@@ -192,7 +192,7 @@ class ItemTest extends TestCase
         // 登録したテストデータ以外がデータベースに格納されていないことを確認
         $this->assertDatabaseMissing('items', [
             'item_name' => 'Dummy',
-            'category' => 1,
+            'category_id' => 1,
             'price' => 123456,
             'kuchikomi_count' => 123456,
             'kuchikomi_sum_score' => 123456,
@@ -245,7 +245,7 @@ class ItemTest extends TestCase
         // // 編集テスト
         // $this->actingAs($this->user)->post('/items/1', [
         //     'item_name' => 'Macbook Air EditTest',
-        //     'category' => 4,
+        //     'category_id' => 4,
         //     'price' => 999999,
         //     'tag' => 'Tag Edit',
         //     'item_image' => 'item_images/mba2018.jpeg',
@@ -253,7 +253,7 @@ class ItemTest extends TestCase
         //
         // $this->assertDatabaseHas('items', [
         //     'item_name' => 'Macbook Air EditTest',
-        //     'category' => 4,
+        //     'category_id' => 4,
         //     'price' => 999999,
         //     'tag' => 'Tag Edit',
         //     'item_image' => 'item_images/mba2018.jpeg',

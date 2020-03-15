@@ -48,7 +48,7 @@ class CategoryController extends Controller
     // public function show($id)
     public function show(Category $category)
     {
-        $items = Item::where('category', $category->id)->paginate(10);;
+        $items = Item::where('category_id', $category->id)->paginate(10);;
 
         return view('categories.index', [
             'categories' => $category,

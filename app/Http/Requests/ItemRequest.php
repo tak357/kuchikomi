@@ -25,7 +25,7 @@ class ItemRequest extends FormRequest
     {
         return [
             'item_name' => 'required|max:128',
-            'category' => 'required|not_in:0',
+            'category_id' => 'required|not_in:0',
             'price' => 'required|integer|max:999999999',    // 価格が1,000万円以上はエラーにする
             'tag' => 'max:128',
         ];
@@ -40,8 +40,8 @@ class ItemRequest extends FormRequest
         return [
             'item_name.required' => '商品名は必ず入力してください',
             'item_name.max' => '商品名は128文字以内で入力してください',
-            'category.required' => 'カテゴリーは必ず選択してください',
-            'category.not_in' => 'カテゴリーは必ず選択してください',
+            'category_id.required' => 'カテゴリーは必ず選択してください',
+            'category_id.not_in' => 'カテゴリーは必ず選択してください',
             'price.required' => '価格は必ず入力してください',
             'price.integer' => '価格は整数で入力してください',
             'price.max' => '価格は999999999以下（1千万）以下で入力してください',

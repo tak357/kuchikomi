@@ -15,7 +15,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'MacBook Pro 16インチ',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 248800,
             'kuchikomi_count' => 4,
             'kuchikomi_sum_score' => 13,
@@ -29,7 +29,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'MacBook Pro 13インチ',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 198800,
             'kuchikomi_count' => 1,
             'kuchikomi_sum_score' => 5,
@@ -43,7 +43,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'MacBook Air',
-            'category' => 2,
+            'category_id' => 2,
             'price' => 148800,
             'kuchikomi_count' => 1,
             'kuchikomi_sum_score' => 3,
@@ -57,7 +57,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Surface Pro7',
-            'category' => 1,
+            'category_id' => 1,
             'price' => 198800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -71,7 +71,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Surface Laptop3',
-            'category' => 1,
+            'category_id' => 1,
             'price' => 238800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -85,7 +85,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'iMac 5k',
-            'category' => 4,
+            'category_id' => 4,
             'price' => 208800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -99,7 +99,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'iMac Pro',
-            'category' => 4,
+            'category_id' => 4,
             'price' => 508800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -113,7 +113,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Surface Studio2',
-            'category' => 3,
+            'category_id' => 3,
             'price' => 498800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -127,7 +127,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Lenovo IdeaCentre A540',
-            'category' => 3,
+            'category_id' => 3,
             'price' => 63954,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -141,7 +141,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Lenovo ThinkCenter',
-            'category' => 3,
+            'category_id' => 3,
             'price' => 52690,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -155,7 +155,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'HP All-in-One 22',
-            'category' => 3,
+            'category_id' => 3,
             'price' => 37800,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,
@@ -169,7 +169,7 @@ class ItemTableSeeder extends Seeder
         DB::table('items')->insert([
             'user_id' => 1,
             'item_name' => 'Dell Vostro3471',
-            'category' => 3,
+            'category_id' => 3,
             'price' => 52980,
             'kuchikomi_count' => 0,
             'kuchikomi_sum_score' => 0,

@@ -149,7 +149,7 @@ class ItemController extends Controller
         $item->fill([
             'user_id' => Auth::user()->id,
             'item_name' => $request->item_name,
-            'category' => $request->category,
+            'category_id' => $request->category_id,
             'price' => $request->price,
             'tag' => $request->tag,
         ]);

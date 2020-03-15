@@ -30,13 +30,13 @@
                 @csrf
                 <label for="item_name">商品名</label><span class="text-danger ml-2">必須</span>
                 <input type="text" name="item_name" id="itemName" class="form-control" value="{{ old('item_name') }}">
-                <label for="category">カテゴリー</label><span class="text-danger ml-2">必須</span>
-                <select name="category" id="category" class="form-control">
-                    <option value="0" selected @if(old('category')=='0') selected @endif>※選択してください</option>
-                    <option value="1" @if(old('category')=='1') selected @endif>ノートパソコン(Windows)</option>
-                    <option value="2" @if(old('category')=='2') selected @endif>ノートパソコン(Mac)</option>
-                    <option value="3" @if(old('category')=='3') selected @endif>デスクトップパソコン(Windows)</option>
-                    <option value="4" @if(old('category')=='4') selected @endif>デスクトップパソコン(Mac)</option>
+                <label for="category_id">カテゴリー</label><span class="text-danger ml-2">必須</span>
+                <select name="category_id" id="category_id" class="form-control">
+                    <option value="0" selected @if(old('category_id')=='0') selected @endif>※選択してください</option>
+                    <option value="1" @if(old('category_id')=='1') selected @endif>ノートパソコン(Windows)</option>
+                    <option value="2" @if(old('category_id')=='2') selected @endif>ノートパソコン(Mac)</option>
+                    <option value="3" @if(old('category_id')=='3') selected @endif>デスクトップパソコン(Windows)</option>
+                    <option value="4" @if(old('category_id')=='4') selected @endif>デスクトップパソコン(Mac)</option>
                 </select>
                 <label for="price">参考価格</label><span class="text-danger ml-2">必須</span>
                 <input type="text" name="price" id="price" class="form-control" value="{{ old('price') }}">

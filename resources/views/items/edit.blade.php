@@ -31,13 +31,13 @@
                 <input type="hidden" name="user_id" id="user_id" value="$item->user_id">
                 <label for="item_name">商品名</label>
                 <input type="text" name="item_name" id="item_name" class="form-control" value="{{ $item->item_name }}">
-                <label for="category">カテゴリー</label>
-                <select name="category" id="category" class="form-control">
+                <label for="category_id">カテゴリー</label>
+                <select name="category_id" id="category_id" class="form-control">
                     <option value="0">※選択してください</option>
-                    <option value="1" @if( $item->category === 1)selected @endif>ノートパソコン(Windows)</option>
-                    <option value="2" @if( $item->category === 2) selected @endif>ノートパソコン(Mac)</option>
-                    <option value="3" @if( $item->category === 3) selected @endif>デスクトップパソコン(Windows)</option>
-                    <option value="4" @if( $item->category === 4) selected @endif>デスクトップパソコン(Mac)</option>
+                    <option value="1" @if( $item->category_id === 1)selected @endif>ノートパソコン(Windows)</option>
+                    <option value="2" @if( $item->category_id === 2) selected @endif>ノートパソコン(Mac)</option>
+                    <option value="3" @if( $item->category_id === 3) selected @endif>デスクトップパソコン(Windows)</option>
+                    <option value="4" @if( $item->category_id === 4) selected @endif>デスクトップパソコン(Mac)</option>
                 </select>
                 <label for="price">価格</label>
                 <input type="text" name="price" id="price" class="form-control" value="{{ $item->price }}">

@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->string('item_name');
-            $table->integer('category');
+            $table->integer('category_id');
             $table->integer('price');
             $table->integer('kuchikomi_count')->default(0);
             $table->integer('kuchikomi_sum_score')->default(0);
