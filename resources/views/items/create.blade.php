@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '商品登録ページ')
+
 @section('content')
 
     {{--フラッシュメッセージ--}}

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ $item->item_name }}の編集ページ
+@endsection
+
 @section('content')
 
     {{--フラッシュメッセージ--}}

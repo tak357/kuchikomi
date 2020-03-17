@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '管理者登録ページ')
+
 @section('content')
     <div class="card">
         <div class="card-header">管理者登録</div>

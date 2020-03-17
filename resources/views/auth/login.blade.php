@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'ログインページ')
+
 @section('content')
     <div class="card">
         <div class="card-header">ログイン</div>

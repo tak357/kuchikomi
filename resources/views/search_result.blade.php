@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ $search_keyword }} の検索結果
+@endsection
+
 @section('content')
 
     <h2 class="head-gray">{{ $search_keyword }}の検索結果</h2>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ $categories->title }}の登録アイテム
+@endsection
+
 @section('content')
 
     <h2 class="head-gray">{{ $categories->title }}の登録アイテム</h2>
