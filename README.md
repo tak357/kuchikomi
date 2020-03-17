@@ -1,6 +1,9 @@
 ## サービス概要
 - パソコンのクチコミサイト
 
+### URL
+<a target="_blank" href="http://13.113.183.18/">クチラン〜最強クチコミランキング〜</a>
+
 ### サービスの目的
 - Amazonアソシエイト/楽天アフィリエイトなどを導入し、アフィリエイト収益を狙う
 - 現在はパソコンのみを掲載しているが、家電やサービス（プロバイダ/MVNOなど）も拡張可能。コンテンツを拡充させることにより、価格.comのような大型比較クチコミサイトにすることも可能。
@@ -8,7 +11,8 @@
 ## 使用技術
 - PHP / Laravel
 - JavaScript
-- Bootstrap
+- HTML / CSS / Bootstrap
+- AWS
 - MySQL
 
 ## 主要機能
@@ -29,5 +33,5 @@
 
 ## 今後の課題、拡張プラン
 - インフラにDockerを使用する。
-- CI/CD(Continuous Integration／Continuous Delivery)を導入し、自動ビルド、自動テストを導入する。
+- CI/CD(Continuous Integration／Continuous Delivery)を導入し、自動ビルド、自動テストを導入する（バグの早期発見の為）。
 - Amazonアソシエイトなどのアフィリエイトを導入し、売上をあげる。
