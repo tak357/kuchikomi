@@ -30,6 +30,11 @@ Route::get('items', 'ItemController@index');
 Route::get('items/search', 'ItemController@search');
 Route::get('items/{item}', 'ItemController@show');
 
+// クチコミ（管理者権限用）
+Route::group(['middleware' => 'auth'], function () {
+    Route::delete('kuchikomis/{kuchikomi}', 'KuchikomiController@destroy');
+});
+
 // クチコミ
 Route::post('kuchikomis', 'KuchikomiController@store');
 

@@ -103,10 +103,16 @@ class KuchikomiController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(kuchikomi $kuchikomi)
     {
-        //
+        // クチコミスコアを再計算する処理
+        $item = new Item();
+        $item->kuchikomiScoreRecalculation($kuchikomi);
+
+        $kuchikomi->delete();
+
+        return back()->with('flash_message', 'クチコミを削除しました。');
     }
 }

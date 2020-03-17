@@ -21,7 +21,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 13,
             'kuchikomi_avg_score' => 3.25,
             'tag' => 'ノートパソコン',
-            'item_image' => 'item_images/mbp16.jpeg',
+            'item_image' => 'item_images/img_01_mbp16.jpeg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             ]);
@@ -35,7 +35,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 5,
             'kuchikomi_avg_score' => 5,
             'tag' => 'ノートパソコン',
-            'item_image' => 'item_images/mbp13.jpeg',
+            'item_image' => 'item_images/img_02_mbp13.jpeg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -49,7 +49,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 3,
             'kuchikomi_avg_score' => 3,
             'tag' => 'ノートパソコン',
-            'item_image' => 'item_images/mba2018.jpeg',
+            'item_image' => 'item_images/img_03_mba2018.jpeg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -63,7 +63,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => 'タブレット型',
-            'item_image' => 'item_images/surfacepro7.jpg',
+            'item_image' => 'item_images/img_04_surfacepro7.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -77,7 +77,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => 'ノートパソコン',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_05_surface_laptop3.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -91,7 +91,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '27inch',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_06_imac5k.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -105,7 +105,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '27inch',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_07_imacpro.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -119,7 +119,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '27inch',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_08_surface_studion2.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -133,7 +133,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_09_ideacentre.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -147,7 +147,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_10_thinkcentre.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -161,7 +161,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => '',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_11_hp.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -175,7 +175,7 @@ class ItemTableSeeder extends Seeder
             'kuchikomi_sum_score' => 0,
             'kuchikomi_avg_score' => 0,
             'tag' => 'モニター別売',
-            'item_image' => 'item_images/no_image.png',
+            'item_image' => 'item_images/img_12_dell.jpg',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -41,9 +41,7 @@ class KuchikomiTableSeeder extends Seeder
             'name' => '家電マスター',
             'email' => '',
             'score' => 4,
-            'body' => 'コスパは良し。
-            キーボードも改善されてグッド。
-            メモリがもう少し多ければ最高。',
+            'body' => 'コスパは良し。キーボードも改善されてグッド。メモリがもう少し多ければ最高。',
             'img' => 'test',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
@@ -55,7 +53,7 @@ class KuchikomiTableSeeder extends Seeder
             'name' => '辛口批評家',
             'email' => '',
             'score' => 1,
-            'body' => '全然ダメ。バッテリーもたない。',
+            'body' => '全然ダメ。バッテリーがもたない。',
             'img' => 'test',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
