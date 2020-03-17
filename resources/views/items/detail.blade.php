@@ -29,8 +29,8 @@
     {{--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する--}}
     @auth
         @if (Auth::user()->id === $item->user_id)
-            <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
-            <form method="post" action="/items/{{ $item->id }}/" id="form_{{$item->id}}">
+            <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}" id="item_del">[記事削除]</a>
+            <form method="post" action="/items/{{ $item->id }}/" id="item_form_{{$item->id}}">
                 @csrf
                 {{ method_field('delete') }}
             </form>
@@ -56,13 +56,11 @@
         <div class="kuchikomi">
             {{--クチコミ削除機能（管理者のみ実行可能）--}}
             @auth
-                @if (Auth::user()->id === $item->user_id)
-                    <a class="del item_detail_menu" href="#" data-id="{{ $kuchikomi->id }}">[クチコミ削除]</a>
-                    <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/" id="form_{{$kuchikomi->id}}">
-                        @csrf
-                        {{ method_field('delete') }}
-                    </form>
-                @endif
+                <a class="del item_detail_menu" href="#" data-id="{{ $kuchikomi->id }}" id="kuchikomi_del">[クチコミ削除]</a>
+                <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/" id="kuchikomi_form">
+                    @csrf
+                    {{ method_field('delete') }}
+                </form>
             @endauth
 
             <table>
@@ -98,7 +96,6 @@
                 </tr>
                 <tr>
                     <th>本文　：</th>
-                    {{--<td>{{ $kuchikomi->body }}</td>--}}
                     <td>{!! nl2br($kuchikomi->body) !!}</td>
                 </tr>
             </table>
@@ -136,4 +133,5 @@
     </div>
 
     <script src="/js/delete.js"></script>
+    <script src="/js/delete_kuchikomi.js"></script>
 @endsection

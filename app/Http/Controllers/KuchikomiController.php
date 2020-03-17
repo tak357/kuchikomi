@@ -113,6 +113,7 @@ class KuchikomiController extends Controller
 
         $kuchikomi->delete();
 
-        return back()->with('flash_message', 'クチコミを削除しました。');
+        return redirect()->back()->with('flash_message', 'クチコミを削除しました。');
+        // return back()->with('flash_message', 'クチコミを削除しました。');
     }
 }

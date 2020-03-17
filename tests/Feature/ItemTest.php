@@ -132,25 +132,6 @@ class ItemTest extends TestCase
             ->assertSeeText('商品登録')
             ->assertDontSeeText('編集ページ')
             ->assertStatus(200);
-
-        // 編集テスト
-        // $this->actingAs($this->user)->post('/items', [
-        //     'user_id' => $this->user->id,
-        //     'item_name' => 'New Macbook Air',
-        //     'category_id' => 2,
-        //     'price' => 123456789,
-        //     'tag' => 'New Edition',
-        //     'item_image' => 'item_images/mba2018.jpeg',
-        // ]);
-
-        // 編集したデータの確認
-        // $this->assertDatabaseHas('items', [
-        //     'item_name' => 'New Macbook Air',
-        //     'category_id' => 2,
-        //     'price' => 123456789,
-        //     'tag' => 'New Edition',
-        //     'item_image' => 'item_images/mba2018.jpeg',
-        // ]);
     }
 
     /**
@@ -240,24 +221,6 @@ class ItemTest extends TestCase
         // ページが見つからないケース(404)
         $response = $this->get('/items/999/edit')->assertStatus(404);
         $response = $this->get('/items/aaa/edit')->assertStatus(404);
-
-        // TODO: POSTじゃなくてPATCH
-        // // 編集テスト
-        // $this->actingAs($this->user)->post('/items/1', [
-        //     'item_name' => 'Macbook Air EditTest',
-        //     'category_id' => 4,
-        //     'price' => 999999,
-        //     'tag' => 'Tag Edit',
-        //     'item_image' => 'item_images/mba2018.jpeg',
-        // ]);
-        //
-        // $this->assertDatabaseHas('items', [
-        //     'item_name' => 'Macbook Air EditTest',
-        //     'category_id' => 4,
-        //     'price' => 999999,
-        //     'tag' => 'Tag Edit',
-        //     'item_image' => 'item_images/mba2018.jpeg',
-        // ]);
 
         $this->actingAs($this->user)->delete('items', [
             'id' => 1,
