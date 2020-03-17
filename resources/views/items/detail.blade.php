@@ -54,6 +54,17 @@
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
     @forelse ($kuchikomis as $kuchikomi)
         <div class="kuchikomi">
+            {{--クチコミ削除機能（管理者のみ実行可能）--}}
+            @auth
+                @if (Auth::user()->id === $item->user_id)
+                    <a class="del item_detail_menu" href="#" data-id="{{ $kuchikomi->id }}">[クチコミ削除]</a>
+                    <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/" id="form_{{$kuchikomi->id}}">
+                        @csrf
+                        {{ method_field('delete') }}
+                    </form>
+                @endif
+            @endauth
+
             <table>
                 <tr>
                     <th>投稿日：</th>
@@ -87,7 +98,8 @@
                 </tr>
                 <tr>
                     <th>本文　：</th>
-                    <td>{{ $kuchikomi->body }}</td>
+                    {{--<td>{{ $kuchikomi->body }}</td>--}}
+                    <td>{!! nl2br($kuchikomi->body) !!}</td>
                 </tr>
             </table>
         </div>
