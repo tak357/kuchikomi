@@ -56,11 +56,10 @@
         <div class="kuchikomi">
             {{--クチコミ削除機能（管理者のみ実行可能）--}}
             @auth
-                <a class="del item_detail_menu" href="#" data-id="{{ $kuchikomi->id }}" id="kuchikomi_del">[クチコミ削除]</a>
                 <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/" id="kuchikomi_form">
                     @csrf
                     {{ method_field('delete') }}
-                </form>
+                    <a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a></form>
             @endauth
 
             <table>
@@ -133,5 +132,5 @@
     </div>
 
     <script src="/js/delete.js"></script>
-    <script src="/js/delete_kuchikomi.js"></script>
+    {{--    <script src="/js/delete_kuchikomi.js"></script>--}}
 @endsection
