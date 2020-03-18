@@ -6,30 +6,11 @@ use App\Http\Requests\KuchikomiRequest;
 use App\Models\Item;
 use App\Models\Kuchikomi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class KuchikomiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //
-    // }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -40,8 +21,14 @@ class KuchikomiController extends Controller
     {
         $kuchikomi = new Kuchikomi;
 
+        // ログインユーザーならユーザーIDをセット、非ログインユーザーなら0をセット
+        if (isset(Auth::user()->id)) {
+            $kuchikomi->fill(['user_id' => Auth::user()->id]);
+        } else {
+            $kuchikomi->fill(['user_id' => 0]);
+        }
+
         $kuchikomi->fill([
-            'user_id' => 1, // dummy
             'name' => $request->comment_user_name,
             'item_id' => $request->item_id,
             'email' => $request->comment_user_email,
@@ -66,46 +53,12 @@ class KuchikomiController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(kuchikomi $kuchikomi)
+    public function destroy(Kuchikomi $kuchikomi)
     {
         // クチコミスコアを再計算する処理
         $item = new Item();
@@ -114,6 +67,5 @@ class KuchikomiController extends Controller
         $kuchikomi->delete();
 
         return redirect()->back()->with('flash_message', 'クチコミを削除しました。');
-        // return back()->with('flash_message', 'クチコミを削除しました。');
     }
 }

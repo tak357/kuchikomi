@@ -25,7 +25,7 @@ class Item extends Model
      * クチコミ関連の数値を再計算する
      * @param $kuchikomi
      */
-    public function kuchikomiScoreRecalculation($kuchikomi): void
+    public function kuchikomiScoreRecalculation(Kuchikomi $kuchikomi): void
     {
         $item = Item::find($kuchikomi->item_id);
 

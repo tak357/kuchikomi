@@ -96,7 +96,7 @@ class ItemController extends Controller
     {
         $item->delete();
 
-        return redirect('/')->with('flash_message', 'アイテムを削除しました。');
+        return redirect('/')->with('flash_message', '記事を削除しました。');
     }
 
     /**

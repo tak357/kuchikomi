@@ -29,10 +29,10 @@
     {{--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する--}}
     @auth
         @if (Auth::user()->id === $item->user_id)
-            <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}" id="item_del">[記事削除]</a>
-            <form method="post" action="/items/{{ $item->id }}/" id="item_form_{{$item->id}}">
+            <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
+            <form method="post" action="/items/{{ $item->id }}/" id="form_{{$item->id}}">
+                @method('DELETE')
                 @csrf
-                {{ method_field('delete') }}
             </form>
             <a class="item_detail_menu" href="/items/{{ $item->id }}/edit">[記事編集]</a>
         @endif
@@ -55,13 +55,13 @@
     @forelse ($kuchikomis as $kuchikomi)
         <div class="kuchikomi">
             {{--クチコミ削除機能（管理者のみ実行可能）--}}
-            @auth
-                <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/" id="kuchikomi_form">
-                    @csrf
-                    {{ method_field('delete') }}
-                    <a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a></form>
-            @endauth
-
+            {{--@auth--}}
+            {{--<form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/">--}}
+            {{--@method('DELETE')--}}
+            {{--@csrf--}}
+            {{--<a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a>--}}
+            {{--</form>--}}
+            {{--@endauth--}}
             <table>
                 <tr>
                     <th>投稿日：</th>
@@ -107,7 +107,7 @@
 
     <h2 class="head-gray">{{ $item->item_name }}のクチコミを書く</h2>
     <div class="item">
-        <form method="post" action=" {{ action('KuchikomiController@store', 'aaa') }} ">
+        <form method="post" action=" {{ action('KuchikomiController@store') }} ">
             @csrf
             <input type="hidden" name="item_id" value="{{ $item->id }}">
             <label for="comment_user_name">名前</label><span class="text-danger ml-2">必須</span>
@@ -132,5 +132,4 @@
     </div>
 
     <script src="/js/delete.js"></script>
-    {{--    <script src="/js/delete_kuchikomi.js"></script>--}}
 @endsection
