@@ -30,7 +30,7 @@
     @auth
         @if (Auth::user()->id === $item->user_id)
             <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
-            <form method="post" action="/items/{{ $item->id }}/" id="form_{{$item->id}}">
+            <form method="post" action="/items/{{ $item->id }}" id="form_{{$item->id}}">
                 @method('DELETE')
                 @csrf
             </form>
@@ -55,13 +55,13 @@
     @forelse ($kuchikomis as $kuchikomi)
         <div class="kuchikomi">
             {{--クチコミ削除機能（管理者のみ実行可能）--}}
-            {{--@auth--}}
-            {{--<form method="post" action="/kuchikomis/{{ $kuchikomi->id }}/">--}}
-            {{--@method('DELETE')--}}
-            {{--@csrf--}}
-            {{--<a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a>--}}
-            {{--</form>--}}
-            {{--@endauth--}}
+            @auth
+                <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}">
+                    @method('DELETE')
+                    @csrf
+                    <a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a>
+                </form>
+            @endauth
             <table>
                 <tr>
                     <th>投稿日：</th>
@@ -132,4 +132,5 @@
     </div>
 
     <script src="/js/delete.js"></script>
+    <script src="/js/delete_kuchikomi.js"></script>
 @endsection
