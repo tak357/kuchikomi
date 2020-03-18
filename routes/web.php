@@ -38,5 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
 // クチコミ
 Route::post('kuchikomis', 'KuchikomiController@store');
 
-// カテゴリーページ
+// カテゴリー
+Route::get('categories', 'CategoryController@index');
 Route::get('categories/{category}', 'CategoryController@show');

@@ -45,6 +45,8 @@
                 </select>
                 <label for="price">価格</label>
                 <input type="text" name="price" id="price" class="form-control" value="{{ $item->price }}">
+                <label for="buying_url">購入URL</label>
+                <input type="text" name="buying_url" id="buying_url" class="form-control" value="{{ $item->buying_url }}">
                 <label for="tag">タグ</label>
                 <input type="text" name="tag" id="tag" class="form-control" value="{{ $item->tag }}">
                 <label for="item_image">商品画像</label><br>

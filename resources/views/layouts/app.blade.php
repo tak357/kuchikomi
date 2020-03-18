@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') | クチラン</title>
-{{--    <title>@isset($title){{ $title }} - @endissetクチラン</title>--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -64,6 +63,9 @@
                 </form>
             </div>
             <h2 class="head-gray">カテゴリー</h2>
+            <div class="category">
+                <a href="{{ url('categories/') }}">カテゴリートップ</a>
+            </div>
             @foreach(\App\Models\Category::all() as $category)
                 <div class="category">
                     <a href="/categories/{{ $category->id }}">
@@ -73,16 +75,18 @@
             @endforeach
 
             <h2 class="head-gray">クチコミ人気ランキング</h2>
-            @foreach(\App\Models\Item::KuchkomiRankingOutput() as $ranking_item)
+            @forelse(\App\Models\Item::KuchkomiRankingOutput() as $ranking_item)
                 <p class="ranking-header">第{{ $loop->iteration }}位：{{ number_format($ranking_item->kuchikomi_avg_score,2) }}点({{ $ranking_item->kuchikomi_count }})</p>
                 <div class="ranking">
-                    <a href="{{ $ranking_item->id }}">
+                    <a href="{{ url('items/' . $ranking_item->id) }}">
                         <img src="{{ asset('storage/' . $ranking_item->item_image) }}"
                              alt="{{ $ranking_item->item_name }}の画像">
                     </a>
-                    <p><a href="{{ $ranking_item->id }}">{{ $ranking_item->item_name }}</a></p>
+                    <p><a href="{{ url('items/' . $ranking_item->id) }}">{{ $ranking_item->item_name }}</a></p>
                 </div>
-            @endforeach
+            @empty
+                <p>まだクチコミはありません</p>
+            @endforelse
 
             <h2 class="head-gray">広告</h2>
             <div class="ad">
