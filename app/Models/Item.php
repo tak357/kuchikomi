@@ -10,13 +10,25 @@ class Item extends Model
 
     /**
      * クチコミスコア上位３製品を出力する
+     * 優先順位：1.クチコミ平均点, 2.クチコミ件数
      * @return string
      */
     public static function kuchkomiRankingOutput()
     {
-        // TODO:クチコミ登録された商品が3件未満の時の処理を追加
 
-        $ranking_items = Item::orderBy('kuchikomi_avg_score', 'desc')->limit(3)->get();
+        $ranking_items = Item::orderBy('kuchikomi_avg_score', 'desc')
+            ->orderBy('kuchikomi_count', 'desc')
+            ->limit(3)
+            ->get();
+
+        // クチコミ登録された商品が3件未満の時はクチコミがあるもののみを出力する
+        $count = 0;
+        foreach ($ranking_items as $ranking_item) {
+            if ($ranking_item->kuchikomi_count == 0) {
+                unset($ranking_items[$count]);
+            }
+            $count++;
+        }
 
         return $ranking_items;
     }

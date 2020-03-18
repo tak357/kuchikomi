@@ -64,12 +64,28 @@ nav li {
 }
 
 .item img {
-  max-width: 115px;
+  max-width: 150px;
 }
 
 .item_img {
   float: left;
-  margin-right: 30px;
+  margin: 5px 30px 0 15px;
+}
+
+.item-detail-img {
+  float: left;
+  margin: 20px 50px 0 20px;
+}
+
+.item-description {
+  margin-top: 15px;
+}
+
+.item_tag {
+  color: gray;
+  font-size: 0.75rem;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .paginate ul {
@@ -101,6 +117,10 @@ nav li {
 
 .kuchikomi th {
   vertical-align: baseline;
+  font-weight: normal;
+}
+
+.kuchikomi_delete {
 }
 
 aside {
@@ -168,5 +188,18 @@ footer {
 
   .item img {
     max-width: 100px;
+  }
+
+  .item-img {
+    margin: 20px 25px 0 20px;
+  }
+
+  .kuchikomi th {
+    width: 25%;
+    font-size: 0.8rem
+  }
+
+  .kuchikomi td {
+    font-size: 0.8rem
   }
 }

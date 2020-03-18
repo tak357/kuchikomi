@@ -151,6 +151,7 @@ class ItemController extends Controller
             'item_name' => $request->item_name,
             'category_id' => $request->category_id,
             'price' => $request->price,
+            'buying_url' => $request->buying_url,
             'tag' => $request->tag,
         ]);
 

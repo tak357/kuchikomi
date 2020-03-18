@@ -42,13 +42,27 @@
     <div class="clearfix"></div>
     <h2 class="head-gray">{{ $item->item_name }}</h2>
     <div class="item">
-        <img class="mb-2" src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
-        <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
-        @if ($item->kuchikomi_avg_score != 0)
-            <p>クチコミ平均点：<span class="text-danger"> {{ number_format($item->kuchikomi_avg_score,2) }} </span>点</p>
-        @else
-            <p>クチコミ平均点：なし</p>
-        @endif
+        <div class="item-detail-img">
+            <img class="mb-2" src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
+        </div>
+        <div class="item-description">
+            <p>参考価格：<span class="text-danger font-weight-bold">{{ number_format($item->price) }}</span>円</p>
+            @if ($item->kuchikomi_avg_score != 0)
+                <p>クチコミ平均点：<span class="text-danger"> {{ number_format($item->kuchikomi_avg_score,2) }} </span>点</p>
+            @else
+                <p>クチコミ平均点：なし</p>
+            @endif
+
+            <p><a href="{{ $item->buying_url }}" target="_blank" class="btn btn-success">購入ページ</a></p>
+
+        </div>
+        <p class="item_tag">タグ：
+            @if(is_null($item->tag))
+                未登録
+            @else
+                {{ $item->tag }}
+            @endif
+        </p>
     </div>
 
     <h2 class="head-gray">{{ $item->item_name }}のクチコミ</h2>
@@ -56,7 +70,7 @@
         <div class="kuchikomi">
             {{--クチコミ削除機能（管理者のみ実行可能）--}}
             @auth
-                <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}">
+                <form method="post" action="/kuchikomis/{{ $kuchikomi->id }}" class="kuchikomi_delete">
                     @method('DELETE')
                     @csrf
                     <a class="del item_detail_menu" href="javascript:void(0)" onclick="this.parentNode.submit()">[クチコミ削除]</a>

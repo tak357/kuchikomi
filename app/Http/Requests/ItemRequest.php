@@ -27,6 +27,7 @@ class ItemRequest extends FormRequest
             'item_name' => 'required|max:128',
             'category_id' => 'required|not_in:0',
             'price' => 'required|integer|max:999999999',    // 価格が1,000万円以上はエラーにする
+            'buying_url' => 'required|url',
             'tag' => 'max:128',
         ];
     }
@@ -43,8 +44,10 @@ class ItemRequest extends FormRequest
             'category_id.required' => 'カテゴリーは必ず選択してください',
             'category_id.not_in' => 'カテゴリーは必ず選択してください',
             'price.required' => '価格は必ず入力してください',
-            'price.integer' => '価格は整数で入力してください',
+            'price.integer' => '価格は整数（半角数字）で入力してください',
             'price.max' => '価格は999999999以下（1千万）以下で入力してください',
+            'buying_url.required' => '購入URLを入力してください',
+            'buying_url.url' => '購入URLは正しいURLで入力してください',
             'tag.max' => 'タグは128文字以下で入力してください',
         ];
     }

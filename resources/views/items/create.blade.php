@@ -42,6 +42,8 @@
                 </select>
                 <label for="price">参考価格</label><span class="text-danger ml-2">必須</span>
                 <input type="text" name="price" id="price" class="form-control" value="{{ old('price') }}">
+                <label for="buying_url">購入URL</label><span class="text-danger ml-2">必須</span>
+                <input type="text" name="buying_url" id="buying_url" class="form-control" value="{{ old('buying_url') }}">
                 <label for="tag">タグ</label><span class="ml-2">任意</span>
                 <input type="text" name="tag" id="tag" class="form-control" value="{{ old('tag') }}">
                 {{--TODO:アップロードした画像にOLDヘルパーがきかない--}}
