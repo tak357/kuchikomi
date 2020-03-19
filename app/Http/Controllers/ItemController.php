@@ -14,6 +14,10 @@ use Illuminate\View\View;
 
 class ItemController extends Controller
 {
+    // 画像がアップロードされなかった時にセットされるデフォルト画像のパス
+    const NO_IMAGE_PATH = 'item_images/no_image.png';
+    const STORAGE_PATH = 'public/item_images';
+
     /**
      * 商品登録フォームを表示する
      *
@@ -32,8 +36,18 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        // 受け取った内容をデータベースに保存する
-        self::saveReceivedContent($request);
+        $item = new Item();
+
+        if (is_null($request->item_image)) {
+            $item->fill(['item_image' => self::NO_IMAGE_PATH]);
+        } else {
+            $item->fill(['item_image' => $request->item_image->store(self::STORAGE_PATH)]);
+            // パス名の修正
+            $item['item_image'] = str_replace('public/', '', $item['item_image']);
+        }
+
+        // データベースに保存する
+        $this->fillItem($request, $item);
 
         return redirect('/')->with('flash_message', '商品を登録しました。');
     }
@@ -41,10 +55,10 @@ class ItemController extends Controller
     /**
      * 商品の詳細情報の表示
      *
-     * @param  item  $item
+     * @param  Item  $item
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(item $item)
+    public function show(Item $item)
     {
         // 投稿者の情報を取得
         $item_creator = User::where('id', $item->user_id)->first();
@@ -62,10 +76,10 @@ class ItemController extends Controller
     /**
      * 商品情報編集のフォームを表示する
      *
-     * @param  item  $item
+     * @param  Item  $item
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(item $item)
+    public function edit(Item $item)
     {
         return view('items.edit', [
             'item' => $item,
@@ -73,26 +87,40 @@ class ItemController extends Controller
     }
 
     /**
-     * データベース内の商品情報を更新する
+     * 商品情報を更新する
      *
-     * @param  ItemRequest  $request  , item  $item
+     * @param  ItemRequest  $request
+     * @param  Item  $item
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(ItemRequest $request, item $item)
+    public function update(ItemRequest $request, Item $item)
     {
-        // 受け取った内容をデータベースに保存する
-        self::saveReceivedContent($request);
+        // 画像がアップロードされたか判定し、アップロードされたら反映する。
+        // アップロードされていない場合は以前の画像をそのまま使用する
+        if (is_null($request->item_image)) {
+            if ($item->item_image === self::NO_IMAGE_PATH) {
+                $item->fill(['item_image' => self::NO_IMAGE_PATH]);
+            }
+        } else {
+            $item->fill(['item_image' => $request->item_image->store(self::STORAGE_PATH)]);
+            // パス名の修正
+            $item['item_image'] = str_replace('public/', '', $item['item_image']);
+        }
+
+        // データベースに保存する
+        $this->fillItem($request, $item);
 
         return redirect('/')->with('flash_message', '商品情報を更新しました。');
     }
 
     /**
-     * Remove the specified resource from storage.
      * 商品情報を削除する
-     * @param  item  $item
+     *
+     * @param  Item  $item
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
-    public function destroy(item $item)
+    public function destroy(Item $item)
     {
         $item->delete();
 
@@ -128,30 +156,20 @@ class ItemController extends Controller
     }
 
     /**
-     * データベースに保存する
+     * 入力された項目をデータベースに保存する
+     *
      * @param $request
-     * @pram item $item
+     * @param $item
+     * @return Item $item
      */
-    // public function isNullImage($request, $item): void
-    public function saveReceivedContent($request): void
+    public function fillItem(Request $request, Item $item): void
     {
-        $item = new Item;
-
-        // 画像がアップロードされたか判定し、アップロードされていない（NULL）場合はデフォルト画像のパスをセットする
-        if (is_null($request->item_image)) {
-            $item->fill(['item_image' => 'item_images/no_image.png']);
-        } else {
-            $item->fill(['item_image' => $request->item_image->store('public/item_images')]);
-            // パス名の修正
-            $item['item_image'] = str_replace('public/', '', $item['item_image']);
-        }
-
         $item->fill([
             'user_id' => Auth::user()->id,
             'item_name' => $request->item_name,
             'category_id' => $request->category_id,
-            'price' => $request->price,
             'buying_url' => $request->buying_url,
+            'price' => $request->price,
             'tag' => $request->tag,
         ]);
 

@@ -30,9 +30,9 @@
     <div class="item">
         <div class="form-group">
             <form action="/items/{{ $item->id }}" method="post" enctype="multipart/form-data">
+                @method('PATCH')
                 @csrf
-                {{ method_field(('patch')) }}
-                <input type="hidden" name="user_id" id="user_id" value="$item->user_id">
+                <input type="hidden" name="user_id" id="user_id" value="{{ $item->user_id }}">
                 <label for="item_name">商品名</label>
                 <input type="text" name="item_name" id="item_name" class="form-control" value="{{ $item->item_name }}">
                 <label for="category_id">カテゴリー</label>
