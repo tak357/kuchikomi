@@ -91,8 +91,8 @@ return [
             'prefix_indexes' => true,
         ],
 
-        // PHP Unitでのテスト用に追加
-        'sqlite_testing' => [
+        // phpunitでのテスト用に追加
+        'testing' => [
             'driver' => 'sqlite',
             'database' => ':memory:', // SQLiteのインメモリ機能を使用
             'prefix' => '',

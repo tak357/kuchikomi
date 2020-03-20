@@ -41,3 +41,8 @@ Route::post('kuchikomis', 'KuchikomiController@store');
 // カテゴリー
 Route::get('categories', 'CategoryController@index');
 Route::get('categories/{category}', 'CategoryController@show');
+
+// 問い合わせフォーム
+Route::get('form', 'InquiryFormController@index')->name('form');
+Route::get('form/confirm', 'InquiryFormController@confirm')->name('form.confirm');
+Route::post('form', 'InquiryFormController@store');

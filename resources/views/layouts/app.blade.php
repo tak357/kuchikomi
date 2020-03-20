@@ -17,6 +17,7 @@
                 @if (Route::has('login'))
                     @auth
                         <li><a href="{{ url('/items/create') }}">商品を登録する</a></li>
+                        <li><a href="{{ route('register') }}">管理者登録</a></li>
                         <li><a href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                         </li>
@@ -33,11 +34,8 @@
                                 <button type="submit" class="">テストログイン</button>
                             </form>
                         </li>
-
                         <li><a href="{{ route('login') }}">管理者ログイン</a></li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}">管理者登録</a></li>
-                        @endif
+                        <li><a href="{{ route('form') }}">お問い合わせ</a></li>
                     @endauth
                 @endif
             </ul>

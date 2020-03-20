@@ -44,15 +44,12 @@ class ItemTest extends TestCase
             'item_name' => 'MacBook Air',
             'category_id' => 2,
             'price' => 148800,
-            'tag' => 'ノートパソコン',
             'buying_url' => 'https://www.amazon.co.jp/dp/B07PRX2Y4W/',
+            'tag' => 'ノートパソコン',
             'item_image' => 'item_images/no_image.png',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-
-        // ダミーデータの作成
-        // factory(Item::class, 10)->create();
     }
 
     /**
@@ -68,8 +65,8 @@ class ItemTest extends TestCase
             ->assertSeeText('クチラン！')
             ->assertSeeText('管理者ログイン')
             ->assertSee('/login')
-            ->assertSeeText('管理者登録')
-            ->assertSee('/register')
+            ->assertDontSeeText('管理者登録')
+            ->assertDontSee('/register')
             ->assertDontSeeText('商品を登録する')
             ->assertDontSeeText('ログアウト')
             ->assertStatus(200);
@@ -85,8 +82,8 @@ class ItemTest extends TestCase
             ->assertSee('/logout')
             ->assertDontSeeText('管理者ログイン')
             ->assertDontSee('/login')
-            ->assertDontSeeText('管理者登録')
-            ->assertDontSee('/register')
+            ->assertSeeText('管理者登録')
+            ->assertSee('/register')
             ->assertStatus(200);
     }
 
@@ -113,6 +110,7 @@ class ItemTest extends TestCase
             ->assertViewIs('auth.register')
             ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
             ->assertSeeText('管理者登録')
+            ->assertSee('/register')
             ->assertStatus(200);
     }
 
