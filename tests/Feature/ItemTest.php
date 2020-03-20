@@ -228,18 +228,4 @@ class ItemTest extends TestCase
             'id' => 1,
         ]);
     }
-
-    /**
-     * サイト内検索のテスト
-     * 「Macbook Air」で検索し、商品名、価格等が正しく出力されているかテストする
-     */
-    public function testSearch()
-    {
-        $response = $this->get('/items/search?search_keyword=MacBook Air')
-            ->assertViewIs('search_result')
-            ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
-            ->assertSeeText('MacBook Airの検索結果')
-            ->assertSeeText('148,800円')
-            ->assertStatus(200);
-    }
 }

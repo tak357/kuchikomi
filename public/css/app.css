@@ -10965,6 +10965,10 @@ nav li {
   margin-right: 10px;
 }
 
+.detail_link {
+  margin: 0 0 0 20px;
+}
+
 .paginate ul {
   justify-content: center;
 }

@@ -28,7 +28,7 @@
             @else
                 <p>クチコミ平均点：なし</p>
             @endif
-            <a href="/items/{{ $item->id }}">詳細ページ</a>
+            <a class="detail_link" href="/items/{{ $item->id }}">詳細ページ</a>
 
         </div>
     @endforeach
