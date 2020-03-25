@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Item;
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -68,7 +68,7 @@ class SearchTest extends TestCase
             ->assertViewIs('search_result')
             ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
             ->assertSeeText('クチラン！')
-            ->assertSeeText('商品を登録する')
+            ->assertSeeText('商品登録')
             ->assertSee('/items/create')
             ->assertSeeText('ログアウト')
             ->assertSee('/logout')
