@@ -24,15 +24,19 @@
                 <label for="category_id">カテゴリー</label>
                 <select name="category_id" id="category_id" class="form-control">
                     <option value="0">※選択してください</option>
-                    <option value="1" @if( $item->category_id === 1)selected @endif>ノートパソコン(Windows)</option>
-                    <option value="2" @if( $item->category_id === 2) selected @endif>ノートパソコン(Mac)</option>
-                    <option value="3" @if( $item->category_id === 3) selected @endif>デスクトップパソコン(Windows)</option>
-                    <option value="4" @if( $item->category_id === 4) selected @endif>デスクトップパソコン(Mac)</option>
+                    @foreach(\App\Models\Category::all() as $category)
+                        @if(isset($category->id))
+                            <option value="{{ $category->id }}"@if(old('category_id')=="$category->id") selected @endif>
+                                {{ $category->title }}
+                            </option>
+                        @endif
+                    @endforeach
                 </select>
                 <label for="price">価格</label>
                 <input type="text" name="price" id="price" class="form-control" value="{{ $item->price }}">
                 <label for="buying_url">購入URL</label>
-                <input type="text" name="buying_url" id="buying_url" class="form-control" value="{{ $item->buying_url }}">
+                <input type="text" name="buying_url" id="buying_url" class="form-control"
+                       value="{{ $item->buying_url }}">
                 <label for="tag">タグ</label>
                 <input type="text" name="tag" id="tag" class="form-control" value="{{ $item->tag }}">
                 <label for="item_image">商品画像</label><br>

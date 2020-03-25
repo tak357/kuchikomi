@@ -22,7 +22,9 @@
                     <option value="0" @if(old('category_id')=='0') selected @endif>※選択してください</option>
                     @foreach(\App\Models\Category::all() as $category)
                         @if(isset($category->id))
-                            <option value="{{ $category->id }}" @if(old('category_id')=="$category->id") selected @endif>{{ $category->title }}</option>
+                            <option value="{{ $category->id }}" @if(old('category_id')=="$category->id") selected @endif>
+                                {{ $category->title }}
+                            </option>
                         @endif
                     @endforeach
                 </select>

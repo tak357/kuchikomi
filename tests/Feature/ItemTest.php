@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Item;
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\DB;
@@ -101,12 +101,13 @@ class ItemTest extends TestCase
     }
 
     /**
-     * 管理者登録ページの確認
+     * 管理者登録ページの確認（ログインユーザーのみ閲覧可能）
      * 確認項目：ステータスコード
      */
     public function testRegister()
     {
-        $response = $this->get('/register')
+        $response = $this->actingAs($this->user)
+            ->get('/register')
             ->assertViewIs('auth.register')
             ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
             ->assertSeeText('管理者登録')
