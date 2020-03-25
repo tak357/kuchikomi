@@ -67,7 +67,7 @@ class ItemTest extends TestCase
             ->assertSee('/login')
             ->assertDontSeeText('管理者登録')
             ->assertDontSee('/register')
-            ->assertDontSeeText('商品を登録する')
+            ->assertDontSeeText('商品登録')
             ->assertDontSeeText('ログアウト')
             ->assertStatus(200);
 
@@ -76,7 +76,7 @@ class ItemTest extends TestCase
             ->assertViewIs('top')
             ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
             ->assertSeeText('クチラン！')
-            ->assertSeeText('商品を登録する')
+            ->assertSeeText('商品登録')
             ->assertSee('/items/create')
             ->assertSeeText('ログアウト')
             ->assertSee('/logout')

@@ -94,7 +94,6 @@ class InquiryFormTest extends TestCase
             ->assertSeeText('サイト内検索')
             ->assertSeeText('カテゴリー')
             ->assertSeeText('カテゴリートップ')
-            ->assertSeeText('ノートパソコン（Windows）')
             ->assertSeeText('クチコミ人気ランキング')
             // フッター
             ->assertSeeText('copyright クチラン')

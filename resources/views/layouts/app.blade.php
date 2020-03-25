@@ -16,8 +16,9 @@
             <ul>
                 @if (Route::has('login'))
                     @auth
-                        <li><a href="{{ url('/items/create') }}">商品を登録する</a></li>
+                        <li><a href="{{ url('/items/create') }}">商品登録</a></li>
                         <li><a href="{{ route('register') }}">管理者登録</a></li>
+                        <li><a href="{{ url('categories/create') }}">カテゴリー登録</a></li>
                         <li><a href="{{ route('logout') }}"
                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
                         </li>
@@ -61,6 +62,7 @@
                 </form>
             </div>
             <h2 class="head-gray">カテゴリー</h2>
+
             <div class="category">
                 <a href="{{ url('categories/') }}">カテゴリートップ</a>
             </div>

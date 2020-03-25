@@ -7,7 +7,7 @@
 @section('content')
 
     <h2 class="head-gray">{{ $categories->title }}の登録アイテム</h2>
-    @foreach($items as $item)
+    @forelse($items as $item)
         <div class="item">
             <div class="item_img">
                 <a href="/items/{{ $item->id }}">
@@ -23,7 +23,11 @@
             @endif
             <a class="detail_link" href="/items/{{ $item->id }}">詳細ページ</a>
         </div>
-    @endforeach
+    @empty
+        <div class="item">
+            <p>このカテゴリーに登録されている商品はありません</p>
+        </div>
+    @endforelse
     <div class="paginate">
         {{ $items->links() }}
     </div>

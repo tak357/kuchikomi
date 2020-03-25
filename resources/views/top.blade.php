@@ -4,14 +4,8 @@
 
 @section('content')
 
-    <!-- フラッシュメッセージ -->
-    @if (session('flash_message'))
-        <div class="flash_message">
-            <div class="alert alert-success">
-                {{ session('flash_message') }}
-            </div>
-        </div>
-    @endif
+    @component('parts.flash_message')
+    @endcomponent
 
     <h2 class="head-gray">登録アイテム</h2>
     @foreach($items as $item)

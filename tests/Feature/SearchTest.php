@@ -68,7 +68,7 @@ class SearchTest extends TestCase
             ->assertViewIs('search_result')
             ->assertSeeInOrder(['<html', '<head', '<body', '<h1'])
             ->assertSeeText('クチラン！')
-            ->assertSeeText('商品を登録する')
+            ->assertSeeText('商品登録')
             ->assertSee('/items/create')
             ->assertSeeText('ログアウト')
             ->assertSee('/logout')

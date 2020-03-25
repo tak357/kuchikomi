@@ -6,25 +6,11 @@
 
 @section('content')
 
-    {{--フラッシュメッセージ--}}
-    @if (session('flash_message'))
-        <div class="flash_message">
-            <div class="alert alert-success">
-                {{ session('flash_message') }}
-            </div>
-        </div>
-    @endif
+    @component('parts.flash_message')
+    @endcomponent
 
-    {{--クチコミフォームのエラーメッセージ--}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @component(('parts.error_message'))
+    @endcomponent
 
     {{--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する--}}
     @auth

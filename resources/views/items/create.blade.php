@@ -4,26 +4,11 @@
 
 @section('content')
 
-    {{--フラッシュメッセージ--}}
-    @if (session('flash_message'))
-        <div class="flash_message">
-            <div class="alert alert-success">
-                {{ session('flash_message') }}
-            </div>
-        </div>
-    @endif
+    @component('parts.flash_message')
+    @endcomponent
 
-    {{--エラーメッセージ--}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+    @component(('parts.error_message'))
+    @endcomponent
 
     <h2 class="head-gray">商品登録</h2>
     <div class="form-group">
@@ -31,21 +16,23 @@
             <form action="/items" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="item_name">商品名</label><span class="text-danger ml-2">必須</span>
-                <input type="text" name="item_name" id="itemName" class="form-control" value="{{ old('item_name') }}">
+                <input type="text" name="item_name" class="form-control" value="{{ old('item_name') }}">
                 <label for="category_id">カテゴリー</label><span class="text-danger ml-2">必須</span>
-                <select name="category_id" id="category_id" class="form-control">
-                    <option value="0" selected @if(old('category_id')=='0') selected @endif>※選択してください</option>
-                    <option value="1" @if(old('category_id')=='1') selected @endif>ノートパソコン(Windows)</option>
-                    <option value="2" @if(old('category_id')=='2') selected @endif>ノートパソコン(Mac)</option>
-                    <option value="3" @if(old('category_id')=='3') selected @endif>デスクトップパソコン(Windows)</option>
-                    <option value="4" @if(old('category_id')=='4') selected @endif>デスクトップパソコン(Mac)</option>
+                <select name="category_id" class="form-control">
+                    <option value="0" @if(old('category_id')=='0') selected @endif>※選択してください</option>
+                    @foreach(\App\Models\Category::all() as $category)
+                        @if(isset($category->id))
+                            <option value="{{ $category->id }}" @if(old('category_id')=="$category->id") selected @endif>{{ $category->title }}</option>
+                        @endif
+                    @endforeach
                 </select>
                 <label for="price">参考価格</label><span class="text-danger ml-2">必須</span>
-                <input type="text" name="price" id="price" class="form-control" value="{{ old('price') }}">
+                <input type="text" name="price" class="form-control" value="{{ old('price') }}">
                 <label for="buying_url">購入URL</label><span class="text-danger ml-2">必須</span>
-                <input type="text" name="buying_url" id="buying_url" class="form-control" value="{{ old('buying_url') }}">
+                <input type="text" name="buying_url" class="form-control"
+                       value="{{ old('buying_url') }}">
                 <label for="tag">タグ</label><span class="ml-2">任意</span>
-                <input type="text" name="tag" id="tag" class="form-control" value="{{ old('tag') }}">
+                <input type="text" name="tag" class="form-control" value="{{ old('tag') }}">
                 {{--TODO:アップロードした画像にOLDヘルパーがきかない--}}
                 <label for="item_image">商品画像　任意</label><br>
                 <input type="file" onchange="previewFile()" name="item_image" id="item_image"

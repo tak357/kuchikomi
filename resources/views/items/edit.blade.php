@@ -6,25 +6,11 @@
 
 @section('content')
 
-    {{--フラッシュメッセージ--}}
-    @if (session('flash_message'))
-        <div class="flash_message">
-            <div class="alert alert-success">
-                {{ session('flash_message') }}
-            </div>
-        </div>
-    @endif
+    @component('parts.flash_message')
+    @endcomponent
 
-    {{--エラーメッセージ--}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @component(('parts.error_message'))
+    @endcomponent
 
     <h2 class="head-gray">{{ $item->item_name }}の編集ページ</h2>
     <div class="item">

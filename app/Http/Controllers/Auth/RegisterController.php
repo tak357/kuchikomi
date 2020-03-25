@@ -39,7 +39,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // ログインユーザーのみ登録ページを参照可能にする
+        $this->middleware('auth');
     }
 
     /**
