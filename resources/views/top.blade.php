@@ -15,15 +15,16 @@
                     <img src="{{ asset('storage/' . $item->item_image) }}" alt="{{ $item->item_name }}の画像">
                 </a>
             </div>
-            <p>{{ $item->item_name }}</p>
-            <p>参考価格：<span class="text-danger">{{ number_format($item->price) }}</span>円</p>
-            @if ($item->kuchikomi_avg_score != 0)
-                <p>クチコミ平均点：<span class="text-danger"> {{ number_format($item->kuchikomi_avg_score,2) }} </span>点</p>
-            @else
-                <p>クチコミ平均点：なし</p>
-            @endif
-            <a class="detail_link" href="/items/{{ $item->id }}">詳細ページ</a>
-
+            <div class="item-top">
+                <p>{{ $item->item_name }}</p>
+                <p>参考価格：<span class="text-danger">{{ number_format($item->price) }}</span>円</p>
+                @if ($item->kuchikomi_avg_score != 0)
+                    <p>クチコミ平均点：<span class="text-danger"> {{ number_format($item->kuchikomi_avg_score,2) }} </span>点</p>
+                @else
+                    <p>クチコミ平均点：なし</p>
+                @endif
+                <p><a href="/items/{{ $item->id }}">詳細ページ</a></p>
+            </div>
         </div>
     @endforeach
 

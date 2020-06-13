@@ -10949,6 +10949,14 @@ nav li {
   margin: 5px 30px 0 15px;
 }
 
+.item-top p {
+  margin-bottom: 0.25rem;
+}
+
+.detail_link {
+  margin: 0 0 0 20px;
+}
+
 .item-detail-img {
   float: left;
   margin: 20px 50px 0 20px;
@@ -10963,10 +10971,6 @@ nav li {
   font-size: 0.75rem;
   text-align: right;
   margin-right: 10px;
-}
-
-.detail_link {
-  margin: 0 0 0 20px;
 }
 
 .paginate ul {
@@ -11017,10 +11021,6 @@ aside .category {
 .category_edit_menu {
   font-size: 12px;
   font-weight: normal;
-  float: right;
-}
-
-.category_edit {
   float: right;
 }
 

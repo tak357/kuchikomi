@@ -15,7 +15,7 @@
             <a href="categories/{{ $category->id }}">{{ $category->title }}
                 @auth
                     <div class="item_detail_menu mt-1">
-                        <a class="" href="/categories/{{ $category->id }}/edit">[編集]</a>
+                        <a href="/categories/{{ $category->id }}/edit">[編集]</a>
                         <a class="del" href="#" data-id="{{ $category->id }}">[削除]</a>
                         <form method="post" action="/categories/{{ $category->id }}" id="form_{{$category->id}}">
                             @method('DELETE')
