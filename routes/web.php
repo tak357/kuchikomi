@@ -53,3 +53,14 @@ Route::get('categories/{category}', 'CategoryController@show');
 Route::get('form', 'InquiryFormController@index')->name('form');
 Route::get('form/confirm', 'InquiryFormController@confirm')->name('form.confirm');
 Route::post('form', 'InquiryFormController@store');
+
+// 管理者ページ
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('users', 'UserController@index')->name('users');
+    // 一時コメントアウト
+    Route::get('users/confirm', 'UserController@confirm')->name('users.confirm');
+    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
+    Route::patch('users/{user}', 'UserController@update')->name('users.udpate');
+    // Route::patch('users/{user}', 'UserController@update');
+});
+
