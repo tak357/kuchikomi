@@ -12,6 +12,7 @@
     <h2 class="head-gray">管理者情報修正確認</h2>
     <div class="form-group">
         <div class="item">
+            {{-- TODO:formのactionを修正する --}}
             {{-- <form action="{{ route('users.patch') }}" method="post"> --}}
             {{-- <form action="{{ action('UserController@update', ['user' => $user]) }}" method="post"> --}}
             <form action="/" method="post">

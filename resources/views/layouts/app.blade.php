@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') | クチラン</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="/js/delete.js"></script>
 </head>
 
 <body>
@@ -57,9 +59,10 @@
             <h2 class="head-gray">サイト内検索</h2>
             <div class="form-group">
                 <form action="{{ action('ItemController@search') }}" method="get">
-                    @csrf<input class="form-control" type="search" name="search_keyword" id="search_keyword"
+                    @csrf
+                    <input class="form-control" type="search" name="search_keyword" id="search_keyword"
                                 placeholder="キーワードを入力">
-                    <button class="btn btn-primary">検索する</button>
+                    <button class="btn btn-primary" id="search_btn">検索する</button>
                 </form>
             </div>
             <h2 class="head-gray">カテゴリー</h2>
