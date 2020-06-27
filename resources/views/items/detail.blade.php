@@ -15,7 +15,7 @@
     {{--商品登録者がログイン中のみ記事編集・記事削除メニューを表示する--}}
     @auth
         @if (Auth::user()->id === $item->user_id)
-            <a class="del item_detail_menu" href="#" data-id="{{ $item->id }}">[記事削除]</a>
+            <a class="del item_detail_menu" href="#" id="itemDelete" data-id="{{ $item->id }}">[記事削除]</a>
             <form method="post" action="/items/{{ $item->id }}" id="form_{{$item->id}}">
                 @method('DELETE')
                 @csrf
@@ -132,5 +132,4 @@
     </div>
 
     <script src="/js/delete.js"></script>
-    <script src="/js/delete_kuchikomi.js"></script>
 @endsection
